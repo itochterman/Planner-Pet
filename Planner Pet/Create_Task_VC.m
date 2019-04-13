@@ -19,6 +19,14 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    CAGradientLayer *myFkngAwsmGrad = [[CAGradientLayer alloc] init];
+    [myFkngAwsmGrad setColors:@[(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor]]];
+    myFkngAwsmGrad.frame = self.view.bounds;
+    
+    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
+    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];
+    
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
     
@@ -28,6 +36,13 @@
     NSLog(@"here!");
     
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    
+}
+
 - (IBAction)pushCTB:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
