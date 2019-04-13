@@ -15,6 +15,9 @@
 		035B3D79225D74AD001AB576 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D78225D74AD001AB576 /* main.m */; };
 		035B3D83225D74AE001AB576 /* Planner_PetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D82225D74AE001AB576 /* Planner_PetTests.m */; };
 		035B3D8E225D74AE001AB576 /* Planner_PetUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D8D225D74AE001AB576 /* Planner_PetUITests.m */; };
+		4630921922614BBA00CAC5B2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4630921722614BBA00CAC5B2 /* Model.xcdatamodeld */; };
+		4630925D22614DF800CAC5B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4630925C22614DF800CAC5B2 /* CoreData.framework */; };
+		46309266226159DF00CAC5B2 /* Create_Task_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46309265226159DF00CAC5B2 /* Create_Task_VC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,16 @@
 		035B3D89225D74AE001AB576 /* Planner PetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Planner PetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		035B3D8D225D74AE001AB576 /* Planner_PetUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Planner_PetUITests.m; sourceTree = "<group>"; };
 		035B3D8F225D74AE001AB576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4630921422613D8600CAC5B2 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		4630921522613D8600CAC5B2 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		4630921822614BBA00CAC5B2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4630925C22614DF800CAC5B2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4630925E2261524500CAC5B2 /* Task+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataProperties.h"; sourceTree = "<group>"; };
+		4630925F2261524500CAC5B2 /* Task+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataClass.h"; sourceTree = "<group>"; };
+		463092602261524500CAC5B2 /* Task+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataClass.m"; sourceTree = "<group>"; };
+		463092612261524500CAC5B2 /* Task+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataProperties.m"; sourceTree = "<group>"; };
+		46309264226159DF00CAC5B2 /* Create_Task_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Create_Task_VC.h; sourceTree = "<group>"; };
+		46309265226159DF00CAC5B2 /* Create_Task_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Create_Task_VC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4630925D22614DF800CAC5B2 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +95,16 @@
 		035B3D5D225D74AB001AB576 = {
 			isa = PBXGroup;
 			children = (
+				4630925E2261524500CAC5B2 /* Task+CoreDataProperties.h */,
+				4630925F2261524500CAC5B2 /* Task+CoreDataClass.h */,
+				463092602261524500CAC5B2 /* Task+CoreDataClass.m */,
+				463092612261524500CAC5B2 /* Task+CoreDataProperties.m */,
+				4630921722614BBA00CAC5B2 /* Model.xcdatamodeld */,
 				035B3D68225D74AB001AB576 /* Planner Pet */,
 				035B3D81225D74AE001AB576 /* Planner PetTests */,
 				035B3D8C225D74AE001AB576 /* Planner PetUITests */,
 				035B3D67225D74AB001AB576 /* Products */,
+				4630925B22614DF700CAC5B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,8 +125,12 @@
 				035B3D6A225D74AB001AB576 /* AppDelegate.m */,
 				035B3D6C225D74AB001AB576 /* ViewController.h */,
 				035B3D6D225D74AB001AB576 /* ViewController.m */,
+				46309264226159DF00CAC5B2 /* Create_Task_VC.h */,
+				46309265226159DF00CAC5B2 /* Create_Task_VC.m */,
 				035B3D6F225D74AB001AB576 /* Main.storyboard */,
 				035B3D72225D74AD001AB576 /* Assets.xcassets */,
+				4630921422613D8600CAC5B2 /* Task.h */,
+				4630921522613D8600CAC5B2 /* Task.m */,
 				035B3D74225D74AD001AB576 /* LaunchScreen.storyboard */,
 				035B3D77225D74AD001AB576 /* Info.plist */,
 				035B3D78225D74AD001AB576 /* main.m */,
@@ -130,6 +154,14 @@
 				035B3D8F225D74AE001AB576 /* Info.plist */,
 			);
 			path = "Planner PetUITests";
+			sourceTree = "<group>";
+		};
+		4630925B22614DF700CAC5B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4630925C22614DF800CAC5B2 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +294,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46309266226159DF00CAC5B2 /* Create_Task_VC.m in Sources */,
 				035B3D6E225D74AB001AB576 /* ViewController.m in Sources */,
+				4630921922614BBA00CAC5B2 /* Model.xcdatamodeld in Sources */,
 				035B3D79225D74AD001AB576 /* main.m in Sources */,
 				035B3D6B225D74AB001AB576 /* AppDelegate.m in Sources */,
 			);
@@ -436,13 +470,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HB6WCZLH75;
+				DEVELOPMENT_TEAM = 6TA982FFLF;
 				INFOPLIST_FILE = "Planner Pet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet-Belle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,13 +488,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HB6WCZLH75;
+				DEVELOPMENT_TEAM = 6TA982FFLF;
 				INFOPLIST_FILE = "Planner Pet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet-Belle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -507,7 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HB6WCZLH75;
+				DEVELOPMENT_TEAM = 6TA982FFLF;
 				INFOPLIST_FILE = "Planner PetUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,7 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HB6WCZLH75;
+				DEVELOPMENT_TEAM = 6TA982FFLF;
 				INFOPLIST_FILE = "Planner PetUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -579,6 +615,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4630921722614BBA00CAC5B2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4630921822614BBA00CAC5B2 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4630921822614BBA00CAC5B2 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 035B3D5E225D74AB001AB576 /* Project object */;
 }
