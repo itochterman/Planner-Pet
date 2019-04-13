@@ -92,3 +92,8 @@ Load up games and play them to memorize the user's goals, heal the user's pet an
 *	Creating a house for the pet to live in
 
 *	Allowing the pet to live a fulfilled and happy life with a loving spouse
+
+## Open Source Uses
+Check Documentation/OpenSourceLicences for more info
+
+* Copyright (c) 2013-2016 FSCalendar (https://github.com/WenchaoD/FSCalendar)
