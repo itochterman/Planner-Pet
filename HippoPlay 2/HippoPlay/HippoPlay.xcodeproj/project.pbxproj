@@ -1,0 +1,811 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2243A8302261B2BA001056E4 /* HippoPlayModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2243A82E2261B2BA001056E4 /* HippoPlayModel.xcdatamodeld */; };
+		2243A8352261B410001056E4 /* HippoModel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243A8332261B410001056E4 /* HippoModel+CoreDataClass.m */; };
+		2243A8362261B410001056E4 /* HippoModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243A8342261B410001056E4 /* HippoModel+CoreDataProperties.m */; };
+		2243A8392261B856001056E4 /* HippoToolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243A8382261B856001056E4 /* HippoToolManager.m */; };
+		2246A45C226074810087A6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A45B226074810087A6B7 /* AppDelegate.m */; };
+		2246A45F226074810087A6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A45E226074810087A6B7 /* ViewController.m */; };
+		2246A462226074810087A6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246A460226074810087A6B7 /* Main.storyboard */; };
+		2246A464226074840087A6B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2246A463226074840087A6B7 /* Assets.xcassets */; };
+		2246A467226074840087A6B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246A465226074840087A6B7 /* LaunchScreen.storyboard */; };
+		2246A46A226074840087A6B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A469226074840087A6B7 /* main.m */; };
+		2246A474226074840087A6B7 /* HippoPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A473226074840087A6B7 /* HippoPlayTests.m */; };
+		2246A47F226074840087A6B7 /* HippoPlayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A47E226074840087A6B7 /* HippoPlayUITests.m */; };
+		2246A494226076350087A6B7 /* HippoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A492226076350087A6B7 /* HippoViewController.m */; };
+		2246A495226076350087A6B7 /* HippoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2246A493226076350087A6B7 /* HippoViewController.xib */; };
+		2246A4982260777A0087A6B7 /* HippoMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4972260777A0087A6B7 /* HippoMainView.m */; };
+		2246A4A3226078A80087A6B7 /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A49B226078A80087A6B7 /* GCDQueue.m */; };
+		2246A4A4226078A80087A6B7 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A49C226078A80087A6B7 /* GCDTimer.m */; };
+		2246A4A5226078A80087A6B7 /* GCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A49D226078A80087A6B7 /* GCDGroup.m */; };
+		2246A4A6226078A80087A6B7 /* GCDSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A49F226078A80087A6B7 /* GCDSemaphore.m */; };
+		2246A4C2226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4A9226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		2246A4C3226079670087A6B7 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4B2226079670087A6B7 /* ViewController+MASAdditions.m */; };
+		2246A4C4226079670087A6B7 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4B6226079670087A6B7 /* MASCompositeConstraint.m */; };
+		2246A4C5226079670087A6B7 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4B7226079670087A6B7 /* MASConstraintMaker.m */; };
+		2246A4C6226079670087A6B7 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4B8226079670087A6B7 /* MASLayoutConstraint.m */; };
+		2246A4C7226079670087A6B7 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4B9226079670087A6B7 /* NSArray+MASAdditions.m */; };
+		2246A4C8226079670087A6B7 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4BA226079670087A6B7 /* View+MASAdditions.m */; };
+		2246A4C9226079670087A6B7 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4BD226079670087A6B7 /* MASConstraint.m */; };
+		2246A4CA226079670087A6B7 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4BF226079670087A6B7 /* MASViewConstraint.m */; };
+		2246A4CB226079670087A6B7 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4C0226079670087A6B7 /* MASViewAttribute.m */; };
+		2246A4D022608C360087A6B7 /* HippoMainVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4CF22608C360087A6B7 /* HippoMainVM.m */; };
+		2246A4D322608D6F0087A6B7 /* HippoBodyStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4D222608D6F0087A6B7 /* HippoBodyStatusView.m */; };
+		2246A4D622608ECD0087A6B7 /* HippoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2246A4D522608ECD0087A6B7 /* HippoProgressView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2246A470226074840087A6B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2246A44F226074810087A6B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2246A456226074810087A6B7;
+			remoteInfo = HippoPlay;
+		};
+		2246A47B226074840087A6B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2246A44F226074810087A6B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2246A456226074810087A6B7;
+			remoteInfo = HippoPlay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2243A82F2261B2BA001056E4 /* HippoPlayModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HippoPlayModel.xcdatamodel; sourceTree = "<group>"; };
+		2243A8312261B410001056E4 /* HippoModel+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HippoModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2243A8322261B410001056E4 /* HippoModel+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HippoModel+CoreDataClass.h"; sourceTree = "<group>"; };
+		2243A8332261B410001056E4 /* HippoModel+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HippoModel+CoreDataClass.m"; sourceTree = "<group>"; };
+		2243A8342261B410001056E4 /* HippoModel+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HippoModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2243A8372261B856001056E4 /* HippoToolManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoToolManager.h; sourceTree = "<group>"; };
+		2243A8382261B856001056E4 /* HippoToolManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoToolManager.m; sourceTree = "<group>"; };
+		2246A457226074810087A6B7 /* HippoPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HippoPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2246A45A226074810087A6B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2246A45B226074810087A6B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2246A45D226074810087A6B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2246A45E226074810087A6B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2246A461226074810087A6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2246A463226074840087A6B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2246A466226074840087A6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2246A468226074840087A6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2246A469226074840087A6B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2246A46F226074840087A6B7 /* HippoPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HippoPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2246A473226074840087A6B7 /* HippoPlayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoPlayTests.m; sourceTree = "<group>"; };
+		2246A475226074840087A6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2246A47A226074840087A6B7 /* HippoPlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HippoPlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2246A47E226074840087A6B7 /* HippoPlayUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoPlayUITests.m; sourceTree = "<group>"; };
+		2246A480226074840087A6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2246A491226076350087A6B7 /* HippoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoViewController.h; sourceTree = "<group>"; };
+		2246A492226076350087A6B7 /* HippoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoViewController.m; sourceTree = "<group>"; };
+		2246A493226076350087A6B7 /* HippoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HippoViewController.xib; sourceTree = "<group>"; };
+		2246A4962260777A0087A6B7 /* HippoMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoMainView.h; sourceTree = "<group>"; };
+		2246A4972260777A0087A6B7 /* HippoMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoMainView.m; sourceTree = "<group>"; };
+		2246A49A226078A80087A6B7 /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
+		2246A49B226078A80087A6B7 /* GCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDQueue.m; sourceTree = "<group>"; };
+		2246A49C226078A80087A6B7 /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDTimer.m; sourceTree = "<group>"; };
+		2246A49D226078A80087A6B7 /* GCDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDGroup.m; sourceTree = "<group>"; };
+		2246A49E226078A80087A6B7 /* GCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCD.h; sourceTree = "<group>"; };
+		2246A49F226078A80087A6B7 /* GCDSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDSemaphore.m; sourceTree = "<group>"; };
+		2246A4A0226078A80087A6B7 /* GCDQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDQueue.h; sourceTree = "<group>"; };
+		2246A4A1226078A80087A6B7 /* GCDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDGroup.h; sourceTree = "<group>"; };
+		2246A4A2226078A80087A6B7 /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
+		2246A4A8226079670087A6B7 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		2246A4A9226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		2246A4AA226079670087A6B7 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		2246A4AB226079670087A6B7 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		2246A4AC226079670087A6B7 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		2246A4AD226079670087A6B7 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		2246A4AE226079670087A6B7 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		2246A4AF226079670087A6B7 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		2246A4B0226079670087A6B7 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		2246A4B1226079670087A6B7 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		2246A4B2226079670087A6B7 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		2246A4B3226079670087A6B7 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		2246A4B4226079670087A6B7 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		2246A4B5226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		2246A4B6226079670087A6B7 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		2246A4B7226079670087A6B7 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		2246A4B8226079670087A6B7 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		2246A4B9226079670087A6B7 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		2246A4BA226079670087A6B7 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		2246A4BB226079670087A6B7 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		2246A4BC226079670087A6B7 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		2246A4BD226079670087A6B7 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		2246A4BE226079670087A6B7 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		2246A4BF226079670087A6B7 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		2246A4C0226079670087A6B7 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		2246A4CD226081D50087A6B7 /* HippoPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoPrefixHeader.pch; sourceTree = "<group>"; };
+		2246A4CE22608C360087A6B7 /* HippoMainVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoMainVM.h; sourceTree = "<group>"; };
+		2246A4CF22608C360087A6B7 /* HippoMainVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoMainVM.m; sourceTree = "<group>"; };
+		2246A4D122608D6F0087A6B7 /* HippoBodyStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoBodyStatusView.h; sourceTree = "<group>"; };
+		2246A4D222608D6F0087A6B7 /* HippoBodyStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoBodyStatusView.m; sourceTree = "<group>"; };
+		2246A4D422608ECD0087A6B7 /* HippoProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoProgressView.h; sourceTree = "<group>"; };
+		2246A4D522608ECD0087A6B7 /* HippoProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HippoProgressView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2246A454226074810087A6B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2246A46C226074840087A6B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2246A477226074840087A6B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2246A44E226074810087A6B7 = {
+			isa = PBXGroup;
+			children = (
+				2243A8322261B410001056E4 /* HippoModel+CoreDataClass.h */,
+				2243A8332261B410001056E4 /* HippoModel+CoreDataClass.m */,
+				2243A8312261B410001056E4 /* HippoModel+CoreDataProperties.h */,
+				2243A8342261B410001056E4 /* HippoModel+CoreDataProperties.m */,
+				2243A82E2261B2BA001056E4 /* HippoPlayModel.xcdatamodeld */,
+				2246A459226074810087A6B7 /* HippoPlay */,
+				2246A472226074840087A6B7 /* HippoPlayTests */,
+				2246A47D226074840087A6B7 /* HippoPlayUITests */,
+				2246A458226074810087A6B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2246A458226074810087A6B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2246A457226074810087A6B7 /* HippoPlay.app */,
+				2246A46F226074840087A6B7 /* HippoPlayTests.xctest */,
+				2246A47A226074840087A6B7 /* HippoPlayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2246A459226074810087A6B7 /* HippoPlay */ = {
+			isa = PBXGroup;
+			children = (
+				2246A4A7226079670087A6B7 /* Masonry */,
+				2246A499226078A80087A6B7 /* YXGCD */,
+				2246A490226076020087A6B7 /* Tool */,
+				2246A48C226075FA0087A6B7 /* Class */,
+				2246A45A226074810087A6B7 /* AppDelegate.h */,
+				2246A45B226074810087A6B7 /* AppDelegate.m */,
+				2246A45D226074810087A6B7 /* ViewController.h */,
+				2246A45E226074810087A6B7 /* ViewController.m */,
+				2246A460226074810087A6B7 /* Main.storyboard */,
+				2246A463226074840087A6B7 /* Assets.xcassets */,
+				2246A465226074840087A6B7 /* LaunchScreen.storyboard */,
+				2246A468226074840087A6B7 /* Info.plist */,
+				2246A469226074840087A6B7 /* main.m */,
+			);
+			path = HippoPlay;
+			sourceTree = "<group>";
+		};
+		2246A472226074840087A6B7 /* HippoPlayTests */ = {
+			isa = PBXGroup;
+			children = (
+				2246A473226074840087A6B7 /* HippoPlayTests.m */,
+				2246A475226074840087A6B7 /* Info.plist */,
+			);
+			path = HippoPlayTests;
+			sourceTree = "<group>";
+		};
+		2246A47D226074840087A6B7 /* HippoPlayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2246A47E226074840087A6B7 /* HippoPlayUITests.m */,
+				2246A480226074840087A6B7 /* Info.plist */,
+			);
+			path = HippoPlayUITests;
+			sourceTree = "<group>";
+		};
+		2246A48C226075FA0087A6B7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				2246A48D226075FA0087A6B7 /* ViewModel */,
+				2246A48E226075FA0087A6B7 /* View */,
+				2246A48F226075FA0087A6B7 /* ViewController */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		2246A48D226075FA0087A6B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2246A4CE22608C360087A6B7 /* HippoMainVM.h */,
+				2246A4CF22608C360087A6B7 /* HippoMainVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2246A48E226075FA0087A6B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2246A4962260777A0087A6B7 /* HippoMainView.h */,
+				2246A4972260777A0087A6B7 /* HippoMainView.m */,
+				2246A4D122608D6F0087A6B7 /* HippoBodyStatusView.h */,
+				2246A4D222608D6F0087A6B7 /* HippoBodyStatusView.m */,
+				2246A4D422608ECD0087A6B7 /* HippoProgressView.h */,
+				2246A4D522608ECD0087A6B7 /* HippoProgressView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2246A48F226075FA0087A6B7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2246A491226076350087A6B7 /* HippoViewController.h */,
+				2246A492226076350087A6B7 /* HippoViewController.m */,
+				2246A493226076350087A6B7 /* HippoViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2246A490226076020087A6B7 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				2246A4CD226081D50087A6B7 /* HippoPrefixHeader.pch */,
+				2243A8372261B856001056E4 /* HippoToolManager.h */,
+				2243A8382261B856001056E4 /* HippoToolManager.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		2246A499226078A80087A6B7 /* YXGCD */ = {
+			isa = PBXGroup;
+			children = (
+				2246A49E226078A80087A6B7 /* GCD.h */,
+				2246A49A226078A80087A6B7 /* GCDSemaphore.h */,
+				2246A49F226078A80087A6B7 /* GCDSemaphore.m */,
+				2246A4A0226078A80087A6B7 /* GCDQueue.h */,
+				2246A49B226078A80087A6B7 /* GCDQueue.m */,
+				2246A4A2226078A80087A6B7 /* GCDTimer.h */,
+				2246A49C226078A80087A6B7 /* GCDTimer.m */,
+				2246A4A1226078A80087A6B7 /* GCDGroup.h */,
+				2246A49D226078A80087A6B7 /* GCDGroup.m */,
+			);
+			path = YXGCD;
+			sourceTree = "<group>";
+		};
+		2246A4A7226079670087A6B7 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				2246A4A8226079670087A6B7 /* MASCompositeConstraint.h */,
+				2246A4A9226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				2246A4AA226079670087A6B7 /* MASConstraint+Private.h */,
+				2246A4AB226079670087A6B7 /* MASLayoutConstraint.h */,
+				2246A4AC226079670087A6B7 /* NSArray+MASShorthandAdditions.h */,
+				2246A4AD226079670087A6B7 /* MASConstraintMaker.h */,
+				2246A4AE226079670087A6B7 /* View+MASAdditions.h */,
+				2246A4AF226079670087A6B7 /* NSArray+MASAdditions.h */,
+				2246A4B0226079670087A6B7 /* MASUtilities.h */,
+				2246A4B1226079670087A6B7 /* MASViewAttribute.h */,
+				2246A4B2226079670087A6B7 /* ViewController+MASAdditions.m */,
+				2246A4B3226079670087A6B7 /* MASViewConstraint.h */,
+				2246A4B4226079670087A6B7 /* MASConstraint.h */,
+				2246A4B5226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				2246A4B6226079670087A6B7 /* MASCompositeConstraint.m */,
+				2246A4B7226079670087A6B7 /* MASConstraintMaker.m */,
+				2246A4B8226079670087A6B7 /* MASLayoutConstraint.m */,
+				2246A4B9226079670087A6B7 /* NSArray+MASAdditions.m */,
+				2246A4BA226079670087A6B7 /* View+MASAdditions.m */,
+				2246A4BB226079670087A6B7 /* View+MASShorthandAdditions.h */,
+				2246A4BC226079670087A6B7 /* Masonry.h */,
+				2246A4BD226079670087A6B7 /* MASConstraint.m */,
+				2246A4BE226079670087A6B7 /* ViewController+MASAdditions.h */,
+				2246A4BF226079670087A6B7 /* MASViewConstraint.m */,
+				2246A4C0226079670087A6B7 /* MASViewAttribute.m */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2246A456226074810087A6B7 /* HippoPlay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2246A483226074840087A6B7 /* Build configuration list for PBXNativeTarget "HippoPlay" */;
+			buildPhases = (
+				2246A453226074810087A6B7 /* Sources */,
+				2246A454226074810087A6B7 /* Frameworks */,
+				2246A455226074810087A6B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HippoPlay;
+			productName = HippoPlay;
+			productReference = 2246A457226074810087A6B7 /* HippoPlay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2246A46E226074840087A6B7 /* HippoPlayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2246A486226074840087A6B7 /* Build configuration list for PBXNativeTarget "HippoPlayTests" */;
+			buildPhases = (
+				2246A46B226074840087A6B7 /* Sources */,
+				2246A46C226074840087A6B7 /* Frameworks */,
+				2246A46D226074840087A6B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2246A471226074840087A6B7 /* PBXTargetDependency */,
+			);
+			name = HippoPlayTests;
+			productName = HippoPlayTests;
+			productReference = 2246A46F226074840087A6B7 /* HippoPlayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2246A479226074840087A6B7 /* HippoPlayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2246A489226074840087A6B7 /* Build configuration list for PBXNativeTarget "HippoPlayUITests" */;
+			buildPhases = (
+				2246A476226074840087A6B7 /* Sources */,
+				2246A477226074840087A6B7 /* Frameworks */,
+				2246A478226074840087A6B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2246A47C226074840087A6B7 /* PBXTargetDependency */,
+			);
+			name = HippoPlayUITests;
+			productName = HippoPlayUITests;
+			productReference = 2246A47A226074840087A6B7 /* HippoPlayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2246A44F226074810087A6B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "xlkd 24";
+				TargetAttributes = {
+					2246A456226074810087A6B7 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					2246A46E226074840087A6B7 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 2246A456226074810087A6B7;
+					};
+					2246A479226074840087A6B7 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 2246A456226074810087A6B7;
+					};
+				};
+			};
+			buildConfigurationList = 2246A452226074810087A6B7 /* Build configuration list for PBXProject "HippoPlay" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2246A44E226074810087A6B7;
+			productRefGroup = 2246A458226074810087A6B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2246A456226074810087A6B7 /* HippoPlay */,
+				2246A46E226074840087A6B7 /* HippoPlayTests */,
+				2246A479226074840087A6B7 /* HippoPlayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2246A455226074810087A6B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2246A467226074840087A6B7 /* LaunchScreen.storyboard in Resources */,
+				2246A464226074840087A6B7 /* Assets.xcassets in Resources */,
+				2246A462226074810087A6B7 /* Main.storyboard in Resources */,
+				2246A495226076350087A6B7 /* HippoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2246A46D226074840087A6B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2246A478226074840087A6B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2246A453226074810087A6B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2246A4A5226078A80087A6B7 /* GCDGroup.m in Sources */,
+				2246A45F226074810087A6B7 /* ViewController.m in Sources */,
+				2243A8362261B410001056E4 /* HippoModel+CoreDataProperties.m in Sources */,
+				2243A8352261B410001056E4 /* HippoModel+CoreDataClass.m in Sources */,
+				2246A4C7226079670087A6B7 /* NSArray+MASAdditions.m in Sources */,
+				2246A4D322608D6F0087A6B7 /* HippoBodyStatusView.m in Sources */,
+				2243A8302261B2BA001056E4 /* HippoPlayModel.xcdatamodeld in Sources */,
+				2246A46A226074840087A6B7 /* main.m in Sources */,
+				2246A4C8226079670087A6B7 /* View+MASAdditions.m in Sources */,
+				2246A4D622608ECD0087A6B7 /* HippoProgressView.m in Sources */,
+				2243A8392261B856001056E4 /* HippoToolManager.m in Sources */,
+				2246A4C2226079670087A6B7 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				2246A4C4226079670087A6B7 /* MASCompositeConstraint.m in Sources */,
+				2246A4982260777A0087A6B7 /* HippoMainView.m in Sources */,
+				2246A4C3226079670087A6B7 /* ViewController+MASAdditions.m in Sources */,
+				2246A4CB226079670087A6B7 /* MASViewAttribute.m in Sources */,
+				2246A4CA226079670087A6B7 /* MASViewConstraint.m in Sources */,
+				2246A45C226074810087A6B7 /* AppDelegate.m in Sources */,
+				2246A4C5226079670087A6B7 /* MASConstraintMaker.m in Sources */,
+				2246A4A4226078A80087A6B7 /* GCDTimer.m in Sources */,
+				2246A4C6226079670087A6B7 /* MASLayoutConstraint.m in Sources */,
+				2246A4A3226078A80087A6B7 /* GCDQueue.m in Sources */,
+				2246A4D022608C360087A6B7 /* HippoMainVM.m in Sources */,
+				2246A494226076350087A6B7 /* HippoViewController.m in Sources */,
+				2246A4C9226079670087A6B7 /* MASConstraint.m in Sources */,
+				2246A4A6226078A80087A6B7 /* GCDSemaphore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2246A46B226074840087A6B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2246A474226074840087A6B7 /* HippoPlayTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2246A476226074840087A6B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2246A47F226074840087A6B7 /* HippoPlayUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2246A471226074840087A6B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2246A456226074810087A6B7 /* HippoPlay */;
+			targetProxy = 2246A470226074840087A6B7 /* PBXContainerItemProxy */;
+		};
+		2246A47C226074840087A6B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2246A456226074810087A6B7 /* HippoPlay */;
+			targetProxy = 2246A47B226074840087A6B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2246A460226074810087A6B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2246A461226074810087A6B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2246A465226074840087A6B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2246A466226074840087A6B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2246A481226074840087A6B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2246A482226074840087A6B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2246A484226074840087A6B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SR94H24W3W;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HippoPlay/Tool/HippoPrefixHeader.pch";
+				INFOPLIST_FILE = HippoPlay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = summerthread.HippoPlay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2246A485226074840087A6B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SR94H24W3W;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HippoPlay/Tool/HippoPrefixHeader.pch";
+				INFOPLIST_FILE = HippoPlay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = summerthread.HippoPlay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2246A487226074840087A6B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YTQQLPWZV;
+				INFOPLIST_FILE = HippoPlayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = summerthread.HippoPlayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HippoPlay.app/HippoPlay";
+			};
+			name = Debug;
+		};
+		2246A488226074840087A6B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YTQQLPWZV;
+				INFOPLIST_FILE = HippoPlayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = summerthread.HippoPlayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HippoPlay.app/HippoPlay";
+			};
+			name = Release;
+		};
+		2246A48A226074840087A6B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YTQQLPWZV;
+				INFOPLIST_FILE = HippoPlayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = summerthread.HippoPlayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HippoPlay;
+			};
+			name = Debug;
+		};
+		2246A48B226074840087A6B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YTQQLPWZV;
+				INFOPLIST_FILE = HippoPlayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = summerthread.HippoPlayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HippoPlay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2246A452226074810087A6B7 /* Build configuration list for PBXProject "HippoPlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2246A481226074840087A6B7 /* Debug */,
+				2246A482226074840087A6B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2246A483226074840087A6B7 /* Build configuration list for PBXNativeTarget "HippoPlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2246A484226074840087A6B7 /* Debug */,
+				2246A485226074840087A6B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2246A486226074840087A6B7 /* Build configuration list for PBXNativeTarget "HippoPlayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2246A487226074840087A6B7 /* Debug */,
+				2246A488226074840087A6B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2246A489226074840087A6B7 /* Build configuration list for PBXNativeTarget "HippoPlayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2246A48A226074840087A6B7 /* Debug */,
+				2246A48B226074840087A6B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2243A82E2261B2BA001056E4 /* HippoPlayModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2243A82F2261B2BA001056E4 /* HippoPlayModel.xcdatamodel */,
+			);
+			currentVersion = 2243A82F2261B2BA001056E4 /* HippoPlayModel.xcdatamodel */;
+			path = HippoPlayModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2246A44F226074810087A6B7 /* Project object */;
+}
