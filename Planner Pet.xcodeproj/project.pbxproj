@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		031E2F072262E1D60090A135 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031E2F062262E1D60090A135 /* FSCalendar.framework */; };
 		031E2F0B226300550090A135 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 031E2F0A226300550090A135 /* CalendarViewController.m */; };
 		035B3D6B225D74AB001AB576 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D6A225D74AB001AB576 /* AppDelegate.m */; };
 		035B3D6E225D74AB001AB576 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D6D225D74AB001AB576 /* ViewController.m */; };
@@ -20,6 +19,7 @@
 		4630921922614BBA00CAC5B2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4630921722614BBA00CAC5B2 /* Model.xcdatamodeld */; };
 		4630925D22614DF800CAC5B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4630925C22614DF800CAC5B2 /* CoreData.framework */; };
 		46309266226159DF00CAC5B2 /* Create_Task_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46309265226159DF00CAC5B2 /* Create_Task_VC.m */; };
+		463092672266700B00CAC5B2 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031E2F062262E1D60090A135 /* FSCalendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4630925D22614DF800CAC5B2 /* CoreData.framework in Frameworks */,
-				031E2F072262E1D60090A135 /* FSCalendar.framework in Frameworks */,
+				463092672266700B00CAC5B2 /* FSCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +183,7 @@
 				035B3D62225D74AB001AB576 /* Sources */,
 				035B3D63225D74AB001AB576 /* Frameworks */,
 				035B3D64225D74AB001AB576 /* Resources */,
-				031E2F082262E2A40090A135 /* ShellScript */,
+				46309268226670AC00CAC5B2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -300,20 +300,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		031E2F082262E2A40090A135 /* ShellScript */ = {
+		46309268226670AC00CAC5B2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FSCalendar.framework",
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
+				"$(SRCROOT)//Carthage/Build/iOS/FSCalendar.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FSCalendar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
