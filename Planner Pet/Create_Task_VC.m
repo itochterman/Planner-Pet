@@ -30,11 +30,11 @@
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
     
-    NSManagedObject * entObj = [NSEntityDescription insertNewObjectForEntityForName: @"Task" inManagedObjectContext: _CDContext];
-    
-    
-    NSLog(@"here!");
-    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,22 +43,47 @@
     
 }
 
+- (IBAction)touchDate:(id)sender {
+    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    [self.addDate setInputView:datePicker];
+    [datePicker addTarget:self action:@selector(saveDate:)
+         forControlEvents:UIControlEventValueChanged];
+
+//    NSLog(@"The date is: %@", self.addDate.text);
+
+}
+
+//
+-(void) saveDate: (UIDatePicker *) picker{
+    _date = picker.date;
+    NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
+    dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
+    _addDate.text = [dateForm stringFromDate: _date];
+
+    NSLog([dateForm stringFromDate: _date]);
+
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
+
 - (IBAction)pushCTB:(id)sender {
+    _entObj = [NSEntityDescription insertNewObjectForEntityForName: @"Task" inManagedObjectContext: _CDContext];
+    
+    [_entObj setValue: _date  forKey: @"dateStart"];
+    [_entObj setValue: _taskDescription.text forKey: @"describe"];
+    [_entObj setValue: _taskTitle.text forKey: @"title"];
+    
+    _taskTitle.delegate = self;
+    _taskDescription.delegate = self;
+    
+    NSLog([_entObj valueForKey: @"title"]);
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-
+    
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)releaseCTB:(id)sender {
-}
 @end

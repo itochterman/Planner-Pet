@@ -12,9 +12,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Create_Task_VC : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *taskTitle;
 @property (weak, nonatomic) IBOutlet UITextField *taskDescription;
 @property (weak, nonatomic) IBOutlet UIButton *createTaskButton;
+- (IBAction)dateChanged:(id)sender;
+@property NSDate * date;
+@property NSManagedObject * entObj;
 @property NSManagedObjectContext * CDContext;
+@property (weak, nonatomic) IBOutlet UITextField *addDate;
 @property AppDelegate * appDelegate;
 
 @end

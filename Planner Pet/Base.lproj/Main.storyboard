@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,8 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="F5P-Rn-W9X" firstAttribute="top" secondItem="hu9-ar-208" secondAttribute="bottom" constant="8" id="6ed-8m-mkW"/>
                             <constraint firstItem="F5P-Rn-W9X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DGH-g7-ubv"/>
@@ -97,6 +98,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="touchDate:" destination="iqJ-7j-cyt" eventType="touchDown" id="0T8-8R-vJx"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter the task description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7t-7Z-jUW">
                                 <rect key="frame" x="51" y="180" width="267" height="37"/>
@@ -135,9 +139,11 @@
                         <viewLayoutGuide key="safeArea" id="FGq-Pu-Hyi"/>
                     </view>
                     <connections>
+                        <outlet property="addDate" destination="JAd-df-XzQ" id="GCa-py-TFG"/>
                         <outlet property="button" destination="hu9-ar-208" id="84H-QA-dIZ"/>
                         <outlet property="createTaskButton" destination="VEl-pd-M9H" id="y6o-71-fgw"/>
                         <outlet property="taskDescription" destination="ZM0-SF-1mc" id="sEX-dT-o0l"/>
+                        <outlet property="taskTitle" destination="iKZ-SO-ALX" id="fE7-p7-mJj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUQ-j4-vlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
