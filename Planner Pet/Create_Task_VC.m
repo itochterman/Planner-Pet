@@ -77,10 +77,15 @@
     [_entObj setValue: _taskDescription.text forKey: @"describe"];
     [_entObj setValue: _taskTitle.text forKey: @"title"];
     
+    [_appDelegate saveContext];
+
+    
     _taskTitle.delegate = self;
     _taskDescription.delegate = self;
     
     NSLog([_entObj valueForKey: @"title"]);
+    
+    [_appDelegate saveContext];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

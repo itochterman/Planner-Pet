@@ -18,6 +18,8 @@
 
 @property NSManagedObject * entity;
 
+-(void) saveContext;
+
 
 @end
 
