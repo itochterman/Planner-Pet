@@ -83,7 +83,7 @@
     _taskTitle.delegate = self;
     _taskDescription.delegate = self;
     
-    NSLog([_entObj valueForKey: @"title"]);
+    NSLog(@"%@", [_entObj valueForKey: @"title"]);
     
     [_appDelegate saveContext];
     

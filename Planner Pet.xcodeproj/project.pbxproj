@@ -20,6 +20,7 @@
 		4630925D22614DF800CAC5B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4630925C22614DF800CAC5B2 /* CoreData.framework */; };
 		46309266226159DF00CAC5B2 /* Create_Task_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46309265226159DF00CAC5B2 /* Create_Task_VC.m */; };
 		463092672266700B00CAC5B2 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031E2F062262E1D60090A135 /* FSCalendar.framework */; };
+		4630926B2268C2A900CAC5B2 /* Task_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4630926A2268C2A900CAC5B2 /* Task_VC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		463092612261524500CAC5B2 /* Task+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataProperties.m"; sourceTree = "<group>"; };
 		46309264226159DF00CAC5B2 /* Create_Task_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Create_Task_VC.h; sourceTree = "<group>"; };
 		46309265226159DF00CAC5B2 /* Create_Task_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Create_Task_VC.m; sourceTree = "<group>"; };
+		463092692268C2A900CAC5B2 /* Task_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task_VC.h; sourceTree = "<group>"; };
+		4630926A2268C2A900CAC5B2 /* Task_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task_VC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				035B3D6A225D74AB001AB576 /* AppDelegate.m */,
 				035B3D6C225D74AB001AB576 /* ViewController.h */,
 				035B3D6D225D74AB001AB576 /* ViewController.m */,
+				463092692268C2A900CAC5B2 /* Task_VC.h */,
+				4630926A2268C2A900CAC5B2 /* Task_VC.m */,
 				46309264226159DF00CAC5B2 /* Create_Task_VC.h */,
 				46309265226159DF00CAC5B2 /* Create_Task_VC.m */,
 				035B3D6F225D74AB001AB576 /* Main.storyboard */,
@@ -328,6 +333,7 @@
 			files = (
 				46309266226159DF00CAC5B2 /* Create_Task_VC.m in Sources */,
 				035B3D6E225D74AB001AB576 /* ViewController.m in Sources */,
+				4630926B2268C2A900CAC5B2 /* Task_VC.m in Sources */,
 				4630921922614BBA00CAC5B2 /* Model.xcdatamodeld in Sources */,
 				035B3D79225D74AD001AB576 /* main.m in Sources */,
 				031E2F0B226300550090A135 /* CalendarViewController.m in Sources */,
