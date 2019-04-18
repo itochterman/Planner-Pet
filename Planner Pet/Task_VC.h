@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import  <CoreData/CoreData.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Task_VC : UIViewController
+@property NSManagedObject * task;
 
 @end
 

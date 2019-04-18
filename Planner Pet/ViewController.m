@@ -81,6 +81,7 @@
     }
 }
 
+#pragma mark - UITableViewDelegate Implementation
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -110,6 +111,16 @@
     id< NSFetchedResultsSectionInfo> sectionInfo = [[self fetchedResultsController] sections][section];
     return [sectionInfo numberOfObjects];
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    [self performSegueWithIdentifier:@"taskView" sender:task];
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate Implementation
+
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [[self tableView] beginUpdates];
@@ -152,16 +163,26 @@
             break;
     }
 }
+
+#pragma mark - Segues
+
 - (IBAction)creatTaskBP:(id)sender {
     [self performSegueWithIdentifier: @"createNewTask" sender:self];
 }
 
 - (IBAction)viewTaskBP:(id)sender {
     
-    [self performSegueWithIdentifier:@"taskView" sender:self];
+//    [self performSegueWithIdentifier:@"taskView" sender:self];
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"taskView"]) {
+        Task_VC * segueDest = [segue destinationViewController];
+        NSManagedObject * task = (NSManagedObject *) sender;
+        segueDest.task = task;
+    }
+}
 
 
 @end

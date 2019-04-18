@@ -10,11 +10,26 @@
 
 @interface Task_VC ()
 
+@property (weak, nonatomic) IBOutlet UITextField *taskTitle;
+@property (weak, nonatomic) IBOutlet UITextField *taskDetail;
+@property (weak, nonatomic) IBOutlet UITextField *taskDate;
+
+
 @end
 
 @implementation Task_VC
 
 - (void)viewDidLoad {
+    
+    NSLog(@"%@", [self.task valueForKey: @"title"]);
+    _taskTitle.text = [self.task valueForKey: @"title"];
+    _taskDetail.text = [self.task valueForKey: @"describe"];
+    
+    NSDate * taskDate = [self.task valueForKey: @"dateStart"];
+    NSDateFormatter * format = [[NSDateFormatter alloc] init];
+    format.dateFormat = @"MMM dd h:mm a";
+    _taskDate.text = [format stringFromDate: taskDate];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
