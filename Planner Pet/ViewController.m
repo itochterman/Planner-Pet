@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UIButton *taskViewB;
+@property NSDate * selectedDate;
 
 
 @end
@@ -22,14 +23,23 @@
 
 - (void)viewDidLoad {
     
+    _selectedDate = NSDate.date;
+    
     [super viewDidLoad];
     
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    [self initializeFetchedResultsController];
+    self.tableView.tableFooterView = [[UIView alloc] init];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self initializeFetchedResultsController];
+
 }
 - (void)initializeFetchedResultsController
 {
@@ -39,9 +49,29 @@
     
     [request setSortDescriptors:@[dateSort]];
     
+    NSDate * currentDate = _selectedDate;
+
+    NSCalendar * cal = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents * components = [cal components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate: currentDate];
+    
+    NSDate * minDate = [cal dateFromComponents: components];
+    
+    [components setHour: 23];
+    [components setMinute: 59];
+    [components setSecond: 59];
+    
+    NSDate * maxDate = [cal dateFromComponents: components];
+
+    
+    NSPredicate * taskPred = [NSPredicate predicateWithFormat: @"(dateStart >= %@) AND (dateStart <= %@)", minDate, maxDate];
+    
+    
+    [request setPredicate:taskPred];
+    
     NSManagedObjectContext * moc = _appDelegate.persistentContainer.viewContext;
     
     [self setFetchedResultsController:[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:nil]];
+    
     [[self fetchedResultsController] setDelegate:self];
     
     NSError *error = nil;
@@ -51,6 +81,7 @@
     }
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ID"];
@@ -59,12 +90,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ID"];
     }
     NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell.textLabel setText:[task valueForKey:@"title"]];
     
+    [cell.textLabel setText:[task valueForKey:@"title"]];
     NSDate * taskDate = [task valueForKey: @"dateStart"];
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
-    format.dateFormat = @"MMM dd yyyy";
+    format.dateFormat = @"MMM dd h:mm a";
     [cell.detailTextLabel setText:[format stringFromDate:taskDate]];
+    
     return cell;
 }
 
@@ -96,6 +128,12 @@
             break;
     }
 }
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [[self tableView] endUpdates];
+}
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
     switch(type) {

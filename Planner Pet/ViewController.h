@@ -12,10 +12,11 @@
 
 
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property AppDelegate * appDelegate;
+
 
 
 
