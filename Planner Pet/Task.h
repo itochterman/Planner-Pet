@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSString * txtDescription;
 
+@property NSNumber * isChecked;
+
 @end
 
 NS_ASSUME_NONNULL_END

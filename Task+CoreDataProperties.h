@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, copy) NSDate *dateEnd;
 @property (nullable, nonatomic, retain) NSObject *describe;
+@property (nullable, nonatomic, retain) NSNumber *isChecked;
 
 @end
 

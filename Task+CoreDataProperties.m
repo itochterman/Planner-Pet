@@ -19,5 +19,6 @@
 @dynamic title;
 @dynamic dateEnd;
 @dynamic describe;
+@dynamic isChecked;
 
 @end
