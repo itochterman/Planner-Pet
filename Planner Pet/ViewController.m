@@ -14,6 +14,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *taskViewB;
 @property NSDate * selectedDate;
 
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
+
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSDictionary<NSString *, UIImage *> *images;
+
 
 @end
 
@@ -34,6 +39,22 @@
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     
+    //Calendar Stuff
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateFormat = @"MMM dd h:mm a";
+    
+    
+    // [self.calendar selectDate:[self.dateFormatter dateFromString:@"2016/02/03"]];
+    
+    /*
+     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+     [self.calendar setScope:FSCalendarScopeWeek animated:YES];
+     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+     [self.calendar setScope:FSCalendarScopeMonth animated:YES];
+     });
+     });
+     */
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -50,8 +71,8 @@
     [request setSortDescriptors:@[dateSort]];
     
     NSDate * currentDate = _selectedDate;
-
-    NSCalendar * cal = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    
+    NSCalendar * cal = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
     NSDateComponents * components = [cal components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate: currentDate];
     
     NSDate * minDate = [cal dateFromComponents: components];
@@ -92,7 +113,7 @@
     }
     NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [cell.textLabel setText:[task valueForKey:@"title"]];
+    [cell.textLabel setText: [task valueForKey:@"title"] ];
     NSDate * taskDate = [task valueForKey: @"dateStart"];
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"MMM dd h:mm a";
@@ -104,6 +125,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [[[self fetchedResultsController] sections] count];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -183,6 +205,43 @@
         segueDest.task = task;
     }
 }
+
+
+#pragma mark - <FSCalendarDelegate>
+
+- (BOOL)calendar:(FSCalendar *)calendar shouldSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    NSLog(@"should select date %@",[self.dateFormatter stringFromDate:date]);
+    return YES;
+}
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    NSLog(@"did select date %@",[self.dateFormatter stringFromDate:date]);
+    if (monthPosition == FSCalendarMonthPositionNext || monthPosition == FSCalendarMonthPositionPrevious) {
+        [calendar setCurrentPage:date animated:YES];
+    }
+    
+    _selectedDate = date;
+    [self initializeFetchedResultsController];
+    [_tableView reloadData];
+    
+}
+
+- (void)calendarCurrentPageDidChange:(FSCalendar *)calendar
+{
+    NSLog(@"did change to page %@",[self.dateFormatter stringFromDate:calendar.currentPage]);
+}
+
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
+{
+    calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
+}
+
+#pragma mark - <FSCalendarDataSource>
+
+
+
 
 
 @end

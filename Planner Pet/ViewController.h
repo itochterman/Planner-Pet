@@ -10,15 +10,13 @@
 #import  <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "Task_VC.h"
+#import "FSCalendar/FSCalendar.h"
 
 
-
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FSCalendarDataSource, FSCalendarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property AppDelegate * appDelegate;
-
-
 
 
 @end
