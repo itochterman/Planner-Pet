@@ -10,7 +10,7 @@
 #import  <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "Task_VC.h"
-#import "FSCalendar/FSCalendar.h"
+#import "FSCalendar.h"
 
 
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FSCalendarDataSource, FSCalendarDelegate>
