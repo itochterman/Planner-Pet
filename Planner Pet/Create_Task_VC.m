@@ -9,6 +9,10 @@
 #import "Create_Task_VC.h"
 
 @interface Create_Task_VC ()
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UILabel *warningLabel;
+
+@property BOOL filledOut;
 
 
 @end
@@ -18,7 +22,10 @@
 
 - (void)viewDidLoad {
     
+ 
     [super viewDidLoad];
+    
+    _warningLabel.hidden = YES;
     
     CAGradientLayer *myFkngAwsmGrad = [[CAGradientLayer alloc] init];
     [myFkngAwsmGrad setColors:@[(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor]]];
@@ -69,26 +76,49 @@
     [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
 }
+- (IBAction)didCancelCT:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)pushCTB:(id)sender {
-    _entObj = [NSEntityDescription insertNewObjectForEntityForName: @"Task" inManagedObjectContext: _CDContext];
     
-    [_entObj setValue: _date  forKey: @"dateStart"];
-    [_entObj setValue: _taskDescription.text forKey: @"describe"];
-    [_entObj setValue: _taskTitle.text forKey: @"title"];
+    if(_date == nil || [_taskTitle.text isEqualToString:@""]){
+        
+        _warningLabel.hidden = NO;
+    }
     
-    [_appDelegate saveContext];
+//    if(_date == nil || _taskTitle == nil || _taskDescription == nil){
+//        //_createTaskButton.enabled = false;
+//        _filledOut = NO;
+//        _warningLabel.hidden = NO;
+//
+//
+//    }
 
-    
-    _taskTitle.delegate = self;
-    _taskDescription.delegate = self;
-    
-    NSLog(@"%@", [_entObj valueForKey: @"title"]);
-    
-    [_appDelegate saveContext];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+    else{
+        NSLog(@"Title is %@ ", _taskTitle.text);
+        NSLog(@"Description is %@ ", _taskDescription.text);
+
+        _entObj = [NSEntityDescription insertNewObjectForEntityForName: @"Task" inManagedObjectContext: _CDContext];
+        
+        [_entObj setValue: _date  forKey: @"dateStart"];
+        [_entObj setValue: _taskDescription.text forKey: @"describe"];
+        [_entObj setValue: _taskTitle.text forKey: @"title"];
+        
+        [_appDelegate saveContext];
+
+        
+        _taskTitle.delegate = self;
+        _taskDescription.delegate = self;
+        
+        NSLog(@"%@", [_entObj valueForKey: @"title"]);
+        
+        [_appDelegate saveContext];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+
+        
 }
 
 @end
