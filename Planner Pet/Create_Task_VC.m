@@ -11,6 +11,7 @@
 @interface Create_Task_VC ()
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
+@property (weak, nonatomic) IBOutlet UITextView *taskDescView;
 
 @property BOOL filledOut;
 
@@ -21,6 +22,14 @@
 @implementation Create_Task_VC
 
 - (void)viewDidLoad {
+    
+    NSLog(_taskDescView.text);
+    
+    _taskDescView.layer.cornerRadius=_taskDescView.frame.size.height/10.0;
+    
+        _taskDescView.clipsToBounds=YES;
+    
+    
     
  
     [super viewDidLoad];
@@ -97,19 +106,19 @@
 
     else{
         NSLog(@"Title is %@ ", _taskTitle.text);
-        NSLog(@"Description is %@ ", _taskDescription.text);
+        NSLog(@"Description is %@ ", _taskDescView.text);
 
         _entObj = [NSEntityDescription insertNewObjectForEntityForName: @"Task" inManagedObjectContext: _CDContext];
         
         [_entObj setValue: _date  forKey: @"dateStart"];
-        [_entObj setValue: _taskDescription.text forKey: @"describe"];
+        [_entObj setValue: _taskDescView.text forKey: @"describe"];
         [_entObj setValue: _taskTitle.text forKey: @"title"];
         
         [_appDelegate saveContext];
 
         
         _taskTitle.delegate = self;
-        _taskDescription.delegate = self;
+        _taskDescView.delegate = self;
         
         NSLog(@"%@", [_entObj valueForKey: @"title"]);
         
