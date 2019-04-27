@@ -1,0 +1,47 @@
+//
+//  HippoPrefixHeader.pch
+//  HippoPlay
+//
+//  Created by xlkd 24 on 2019/4/12.
+//  Copyright © 2019 xlkd 24. All rights reserved.
+//
+
+#ifndef HippoPrefixHeader_pch
+#define HippoPrefixHeader_pch
+
+#import "Masonry.h"
+#import "HippoToolManager.h"
+#import "GCD.h"
+#import "AppDelegate.h"
+#import "JSUserDefaultTool.h"
+#import "SVProgressHUD.h"
+
+#define STSizeWithWidth(x)  (x * kScreenWidth / 750.0)
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define STColorWithHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define CurrentAppDelegate   ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
+
+#define HippoExpTime 60
+
+#define HippoCleanTime 10
+
+#define HippoMoodTime 30
+
+#define HippoShitTime 30
+
+#define HippoShitNumer 3
+
+#define HippoDownTime 60
+
+#define HippoRedLine 0.4
+
+   
+
+
+#endif /* HippoPrefixHeader_pch */
