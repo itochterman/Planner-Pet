@@ -27,6 +27,12 @@
     
     _taskDescView.layer.cornerRadius=_taskDescView.frame.size.height/10.0;
     
+    self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height/6.66;
+    self.cancelButton.clipsToBounds = YES;
+    
+    self.createTaskButton.layer.cornerRadius = self.createTaskButton.frame.size.height/6.66;
+    self.createTaskButton.clipsToBounds = YES;
+    
     _taskDescView.clipsToBounds=YES;
     
     

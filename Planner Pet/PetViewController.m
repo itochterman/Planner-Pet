@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *montlyTotalaverage;
 @property (weak, nonatomic) IBOutlet UILabel *yearlyTotal;
 @property (weak, nonatomic) IBOutlet UILabel *yearlyaverage;
+@property (weak, nonatomic) IBOutlet UIButton *back;
+@property (weak, nonatomic) IBOutlet UIButton *data;
 
 @property (weak, nonatomic) IBOutlet UIView *dataView;
 
@@ -45,6 +47,11 @@
     CAGradientLayer *myFkngAwsmGrad = [[CAGradientLayer alloc] init];
     [myFkngAwsmGrad setColors:@[(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor]]];
     myFkngAwsmGrad.frame = self.view.bounds;
+    self.back.layer.cornerRadius = self.back.frame.size.height/6.66;
+    self.back.clipsToBounds = YES;
+    
+    self.data.layer.cornerRadius = self.data.frame.size.height/6.66;
+    self.data.clipsToBounds = YES;
     
     [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
     self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];

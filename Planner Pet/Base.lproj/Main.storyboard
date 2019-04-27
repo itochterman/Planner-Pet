@@ -54,7 +54,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hi5-5E-bgf">
-                                <rect key="frame" x="7" y="260" width="343" height="333"/>
+                                <rect key="frame" x="16" y="314" width="343" height="333"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="66" id="Tyw-lw-yAe">
@@ -286,8 +286,10 @@
                         <viewLayoutGuide key="safeArea" id="BA2-4K-oUL"/>
                     </view>
                     <connections>
+                        <outlet property="back" destination="Cfu-kf-kSh" id="H4t-Vm-Dp2"/>
                         <outlet property="dailyTotal" destination="nMM-Ps-9oy" id="H6C-6h-Y7T"/>
                         <outlet property="dailyaverage" destination="SEa-kg-0k5" id="jZv-6K-Iu3"/>
+                        <outlet property="data" destination="yxY-U1-2eb" id="6Ix-td-kE0"/>
                         <outlet property="dataView" destination="bVw-3S-iLw" id="Dy6-SO-KAf"/>
                         <outlet property="montlyTotal" destination="w4c-WA-TvW" id="raO-Hf-OLj"/>
                         <outlet property="montlyTotalaverage" destination="C4W-pM-HvZ" id="wHH-0q-i9j"/>
@@ -376,6 +378,7 @@
                         <viewLayoutGuide key="safeArea" id="4cI-Cy-hyu"/>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="szG-qV-n7y" id="iBx-jA-XLc"/>
                         <outlet property="taskDate" destination="GoH-8a-VFf" id="ME7-y3-8yb"/>
                         <outlet property="taskDetail" destination="AOx-XX-hqm" id="8RV-uA-9tI"/>
                         <outlet property="taskTitle" destination="TgC-pW-NaK" id="Cv8-it-BiF"/>

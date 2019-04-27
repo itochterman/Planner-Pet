@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskTitle;
 @property (weak, nonatomic) IBOutlet UITextView *taskDetail;
 @property (weak, nonatomic) IBOutlet UITextField *taskDate;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 
 @end
@@ -24,6 +25,9 @@
     
     _taskDetail.layer.cornerRadius = _taskDetail.frame.size.height/12;
     _taskDetail.clipsToBounds=YES;
+    
+    self.doneButton.layer.cornerRadius = self.doneButton.frame.size.height/6.66;
+    self.doneButton.clipsToBounds = YES;
     
     
     NSLog(@"%@", [self.task valueForKey: @"title"]);
