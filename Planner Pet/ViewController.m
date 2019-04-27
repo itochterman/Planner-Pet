@@ -125,41 +125,36 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ID"];
     }
-    [[cell subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    cell.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.8];
     
     NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-
-    
-    UIView* cellView = [UIView new];
-    cellView.frame = CGRectMake(0.0, 0.0, cell.bounds.size.width, cell.bounds.size.height);
-    cell.backgroundColor = [UIColor redColor];
-  
-    
     
     //sets image states
     UIImage* checked = [UIImage imageNamed:@"checked.png"];
     UIImage* unChecked = [UIImage imageNamed:@"unchecked.png"];
     //sets up button
     UIButton *checkbox = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect frame = CGRectMake(0.0, 0.0, checked.size.width, checked.size.height);
-    checkbox.frame = frame;
     checkbox.backgroundColor = [UIColor clearColor];
     //sets up images for states
-
-    ([task valueForKey:@"isChecked"]) ? NSLog(@"TRUE") : NSLog(@"FALSE");
+    
+    
     if ([[task valueForKey:@"isChecked"]boolValue]){
         [checkbox setBackgroundImage:checked forState:UIControlStateNormal];
     }else{
         [checkbox setBackgroundImage:unChecked forState:UIControlStateNormal];
     }
     
-    
     //adds method to check the box
     [checkbox addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
-    int checkboxCenterWidth = (cell.frame.size.width) - (checkbox.frame.size.width  / 2);
-    int checkboxCenterHeight = cell.frame.size.height / 2;
-    checkbox.center =  CGPointMake(checkboxCenterWidth, checkboxCenterHeight);
+    
+    [cell.contentView addSubview:checkbox];
+    checkbox.translatesAutoresizingMaskIntoConstraints = NO;
+    [[checkbox.trailingAnchor constraintEqualToAnchor:cell.trailingAnchor] setActive:YES];
+    [[checkbox.widthAnchor constraintEqualToConstant:checked.size.width] setActive:YES];
+    [[checkbox.bottomAnchor constraintEqualToAnchor:cell.bottomAnchor] setActive:YES];
+    [[checkbox.topAnchor constraintEqualToAnchor:cell.topAnchor] setActive:YES];
     
     //creates date label
     UILabel * date = [UILabel new];
@@ -169,30 +164,16 @@
     date.text = [format stringFromDate:taskDate];
     date.textColor = [UIColor grayColor];
     date.font=[date.font fontWithSize:15];
-    date.frame = CGRectMake(0.0, 0.0, date.intrinsicContentSize.width, date.intrinsicContentSize.height);
-    int dateCenterWidth = (cell.frame.size.width) - (10*checkbox.frame.size.width/6);
-    int dateCenterHeight = cell.frame.size.height / 2;
-    date.center =  CGPointMake(dateCenterWidth, dateCenterHeight);
+    
+    [cell.contentView addSubview:date];
+    date.translatesAutoresizingMaskIntoConstraints = NO;
+    [[date.trailingAnchor constraintEqualToAnchor:checkbox.leadingAnchor] setActive:YES];
+    [[date.bottomAnchor constraintEqualToAnchor:cell.bottomAnchor] setActive:YES];
+    [[date.topAnchor constraintEqualToAnchor:cell.topAnchor] setActive:YES];
     
     
-//    Creates title button
-    UILabel* title = [UILabel new];
-    //creates text for button
-    title.text = [task valueForKey:@"title"];
-    
-    // aligns button in cell frame
-    title.frame = CGRectMake(20, cell.frame.size.height / 4, title.intrinsicContentSize.width, title.intrinsicContentSize.height);
-//    int titleCenterWidth = (title.frame.size.width);
-//    int titleCenterHeight = cell.frame.size.height / 2;
-//    title.center =  CGPointMake(titleCenterWidth, titleCenterHeight);
-    
-    
-
-    [cellView addSubview:title];
-    [cellView addSubview:date];
-    [cellView addSubview:checkbox];
-    [cell addSubview:cellView];
-    
+    // Set the text label
+    cell.textLabel.text = [task valueForKey:@"title"];
     
     return cell;
 }
@@ -216,6 +197,38 @@
     [self performSegueWithIdentifier:@"taskView" sender:task];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"editingStyleForRowAtIndexPath");
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{    return YES; // allow that row to swipe
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    __weak ViewController* weakSelf = self;
+    UITableViewRowAction* delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        NSManagedObject * task = [weakSelf.fetchedResultsController objectAtIndexPath: indexPath];
+        NSManagedObjectContext * moc = weakSelf.appDelegate.persistentContainer.viewContext;
+        NSLog(@"Deleting Task %@", [task valueForKey:@"title"]);
+        [moc deleteObject:task];
+        [weakSelf.appDelegate saveContext];
+    }];
+    
+    //delete.backgroundColor = UIColor.redColor;
+    
+    return @[delete];
+}
+
 #pragma mark - Cell button methods
 
 - (void)checkButtonTapped:(UIButton*)sender event:(id)event
@@ -227,16 +240,16 @@
     if (indexPath != nil)
     {
         NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-([task valueForKey:@"isChecked"]) ? NSLog(@"TRUE") : NSLog(@"FALSE");
+        ([task valueForKey:@"isChecked"]) ? NSLog(@"TRUE") : NSLog(@"FALSE");
         if([[task valueForKey:@"isChecked"]boolValue]){
-             [task setValue:[NSNumber numberWithBool:NO] forKey:@"isChecked"];
+            [task setValue:[NSNumber numberWithBool:NO] forKey:@"isChecked"];
             [_appDelegate saveContext];
         }else{
             [task setValue:[NSNumber numberWithBool:YES] forKey:@"isChecked"];
             [_appDelegate saveContext];
         }
         
-([task valueForKey:@"isChecked"]) ? NSLog(@"TRUE") : NSLog(@"FALSE");
+        ([task valueForKey:@"isChecked"]) ? NSLog(@"TRUE") : NSLog(@"FALSE");
     }
 }
 
@@ -294,7 +307,7 @@
 
 - (IBAction)viewTaskBP:(id)sender {
     
-//    [self performSegueWithIdentifier:@"taskView" sender:self];
+    //    [self performSegueWithIdentifier:@"taskView" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -346,6 +359,5 @@
 
 
 @end
-
 
 
