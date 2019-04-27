@@ -162,7 +162,7 @@
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"h:mm a";
     date.text = [format stringFromDate:taskDate];
-    date.textColor = [UIColor grayColor];
+    date.textColor = [UIColor whiteColor];
     date.font=[date.font fontWithSize:15];
     
     [cell.contentView addSubview:date];
@@ -174,6 +174,7 @@
     
     // Set the text label
     cell.textLabel.text = [task valueForKey:@"title"];
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     return cell;
 }
