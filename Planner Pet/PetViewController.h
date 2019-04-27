@@ -2,8 +2,8 @@
 //  PetViewController.h
 //  Planner Pet
 //
-//  Created by Will Powers on 4/22/19.
-//  Copyright © 2019 Will Powers. All rights reserved.
+//  Created by Wenyin Zheng on 4/26/19.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
