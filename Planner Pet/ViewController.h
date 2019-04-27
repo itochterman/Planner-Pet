@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property AppDelegate * appDelegate;
+@property (weak, nonatomic) IBOutlet UIButton *petView;
 
 
 @end

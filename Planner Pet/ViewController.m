@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UIButton *taskViewB;
+@property (weak, nonatomic) IBOutlet UIButton *createTask;
 @property NSDate * selectedDate;
 
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
@@ -36,6 +37,18 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.petView.layer.cornerRadius = self.petView.frame.size.height/6.66;
+    self.petView.clipsToBounds = YES;
+    self.createTask.layer.cornerRadius = self.createTask.frame.size.height/6.66;
+    self.createTask
+    .clipsToBounds = YES;
+    self.calendar.layer.cornerRadius = self.calendar.frame.size.height/39.5;
+    self.calendar.clipsToBounds = YES;
+    
+    self.tableView.layer.cornerRadius=self.tableView.frame.size.height/67;
+    
+    self.tableView.clipsToBounds=YES;
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     
@@ -120,6 +133,8 @@
     
     UIView* cellView = [UIView new];
     cellView.frame = CGRectMake(0.0, 0.0, cell.bounds.size.width, cell.bounds.size.height);
+    cell.backgroundColor = [UIColor redColor];
+  
     
     
     //sets image states
