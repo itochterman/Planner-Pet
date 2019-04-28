@@ -293,14 +293,20 @@
 
 - (void)configHippoPlayGame {
     HippoModel *model = [[HippoManager shareInstance] configDataWithModel];
-    if (model.exp < 0.5 || model.clean < 0.5) {
+    if (model.exp < 0.5 || model.clean <= 0) {
         [SVProgressHUD showErrorWithStatus:@"I’m too HUNGRY to play games with u now"];
         [SVProgressHUD dismissWithDelay:1.0];
         return;
     }
-    GameViewController *gameVC = [[GameViewController alloc]init];
-    gameVC.delegate = self;
-    [self presentViewController:gameVC animated:YES completion:nil];
+    UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"Tip" message:@"YOU HAVE FOR TOTAL 5 MINS TO EARN YOUR POINTS; EVERY FOX = 1 POINT; IF YOU HAVE GREATER THAN 10 FOXS , HIPPO MOOD+2; GREATER THAN 20, HIPPO MOOD +3 AND SO ON, TRY TO HIT AS MUCH AS YOU CAN!!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *suerAction = [UIAlertAction actionWithTitle:@"I know" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        GameViewController *gameVC = [[GameViewController alloc]init];
+        gameVC.delegate = self;
+        [self presentViewController:gameVC animated:YES completion:nil];
+    }];
+    [alertCtr addAction:suerAction];
+    [self presentViewController:alertCtr animated:YES completion:nil];
+    
 }
 
 

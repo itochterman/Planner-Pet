@@ -7,6 +7,7 @@
 //
 
 #import "Create_Task_VC.h"
+#import "HippoManager.h"
 
 @interface Create_Task_VC ()
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -130,10 +131,18 @@
         
         [_appDelegate saveContext];
         
+        //创建任务完成通知
+        [self createTaskOk];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     
     
+}
+
+- (void)createTaskOk
+{
+    [[HippoManager shareInstance] createTaskComplete];
 }
 
 @end

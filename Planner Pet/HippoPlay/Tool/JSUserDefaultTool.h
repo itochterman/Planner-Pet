@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)isSameDay:(long)iTime1 Time2:(long)iTime2;
 
++ (BOOL)isCanShit;
+
 @end
 
 NS_ASSUME_NONNULL_END

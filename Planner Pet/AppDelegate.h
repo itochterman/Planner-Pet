@@ -14,13 +14,21 @@
 
 @property (nonatomic,assign) BOOL allowAcrolls;
 
+@property (nonatomic,assign) BOOL isCanPlayGame;
+
+@property (nonatomic,assign) BOOL isShowShitAnmation;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @property NSPersistentContainer * persistentContainer;
 
 @property NSManagedObject * entity;
 
+@property (nonatomic,assign) BOOL isNotToday;//上次打开和本次打开是否是同一天
+
 -(void) saveContext;
+
++ (AppDelegate *) App;
 
 
 @end

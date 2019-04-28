@@ -2,8 +2,8 @@
 //  HippoModel+CoreDataClass.h
 //  HippoPlay
 //
-//  Created by xlkd 24 on 2019/4/13.
-//  Copyright © 2019 xlkd 24. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/13.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 //
 

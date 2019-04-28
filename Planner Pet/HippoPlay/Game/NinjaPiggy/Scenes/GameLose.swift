@@ -24,10 +24,15 @@ class GameLose:SKScene {
             let touchLocation = touch.location(in: self)
             // 点击开始游戏按钮
             if (playNode?.contains(touchLocation))! {
-                let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-                let scene = GameScene(size: CGSize(width: 2048, height: 1536))
-                scene.scaleMode = .aspectFill
-                self.view?.presentScene(scene, transition:reveal)
+                if AppDelegate.app()?.isCanPlayGame ?? true {
+                    let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+                    let scene = GameScene(size: CGSize(width: 2048, height: 1536))
+                    scene.scaleMode = .aspectFill
+                    self.view?.presentScene(scene, transition:reveal)
+                }else{
+                    SVProgressHUD.showError(withStatus: "I’m too HUNGRY to play games with u now")
+                    SVProgressHUD.dismiss(withDelay: 1.0)
+                }
             }
             // 点击返回按钮 -- 返回河马日历
             if (learningNode?.contains(touchLocation))!{

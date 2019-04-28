@@ -35,7 +35,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
     var monsterScore:Int = 0   // monster score 分数
     let ninjaLiveLabelNode  :SKLabelNode = SKLabelNode()
     let timeLabelNode  :SKLabelNode = SKLabelNode()
-    var ninjaLive:Int    = 5   // ninja live  生命
+//    var ninjaLive:Int    = 5   // ninja live  生命
+    var ninjaLive:String = "5:00" //显示的倒计时时间字符串 分：秒
+    
     
     var ninjaNode  = SKSpriteNode()   // 加入ninja player
     // Ninja Atlas
@@ -47,11 +49,17 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
     var monsterAtlas = SKTextureAtlas()
     var monsterTexturesArray = [SKTexture]()
     var hitAction = SKAction()
+    var timer : Timer = Timer()
+    var djsTime:Int = 60*5//倒计时时间：单位 秒
+    
     
     var invincible = false    // 无敌时刻
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "begainPlayGame"), object: nil)
+        
         // 真实世界的物理重力
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         physicsWorld.contactDelegate = self
@@ -91,44 +99,88 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
     //MARK:- 加入logo
     func addLogo(){
         let logo = SKSpriteNode(imageNamed: "logo")
-        logo.position = CGPoint(x: self.size.width / 2, y: self.frame.height - (self.frame.height / 5))
+        logo.position = CGPoint(x: self.size.width / 2, y: self.frame.height - (self.frame.height / 5)-30)
         logo.zPosition = Layer.ninja.rawValue
         logo.setScale(0.7)
         logo.name = "logo"
         self.addChild(logo)       
     }
+    func transToHourMinSec(time: Int) -> String
+    {
+        let allTime: Int = Int(time)
+        var minutes = 0
+        var seconds = 0
+        var minutesText = ""
+        var secondsText = ""
+        minutes = allTime % 3600 / 60
+        minutesText = minutes > 9 ? "\(minutes)" : "0\(minutes)"
+        
+        seconds = allTime % 3600 % 60
+        secondsText = seconds > 9 ? "\(seconds)" : "0\(seconds)"
+        
+        return "\(minutesText):\(secondsText)"
+    }
     
     //添加倒计时
     func addTimer() {
-        timeLabelNode.text = "倒计时";
-        timeLabelNode.color = SKColor.white;
-        ninjaLiveLabelNode.fontSize = 23
-        ninjaLiveLabelNode.setScale(1.0)
-        ninjaLiveLabelNode.zPosition = 1
-        ninjaLiveLabelNode.position = CGPoint(x: 30, y: 300)
-        ninjaLiveLabelNode.name = "timeLabelNode"
-        self.addChild(timeLabelNode)
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+            if self.djsTime<=0{
+                //游戏结束
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "endPlayGame"), object: nil, userInfo: ["score":self.monsterScore])
+                timer.fireDate = Date.distantFuture
+                timer.invalidate()
+                // 切换场景
+                // 播放失败的音乐
+                let loseAction = SKAction.playSoundFileNamed("lose", waitForCompletion: false)
+                self.run(loseAction, completion: {
+                    //monsterNode.run(SKAction.removeFromParent())
+                    //ninjaNode.run(SKAction.removeFromParent())
+                    // you win 切换场景 Scene
+                    let reveal = SKTransition.doorsCloseHorizontal(withDuration: 0.5)
+                    let gameLoseScene = SKScene(fileNamed: "GameLose")
+                    gameLoseScene?.size = (self.size)
+                    gameLoseScene?.scaleMode = .aspectFill
+                    self.view?.presentScene(gameLoseScene!, transition: reveal)
+                })
+            }else{
+                self.djsTime = self.djsTime-1
+                self.ninjaLive = self.transToHourMinSec(time: self.djsTime)
+                self.ninjaLiveLabelNode.text = "Time:\(self.ninjaLive)"
+            }
+        })
+        //开始计时器
+        timer.fire()
+        
+        
+//        timeLabelNode.text = "倒计时";
+//        timeLabelNode.fontColor = SKColor.black;
+//        ninjaLiveLabelNode.fontSize = 40
+//        ninjaLiveLabelNode.setScale(1.0)
+//        ninjaLiveLabelNode.zPosition = 1
+//        ninjaLiveLabelNode.position = CGPoint(x: self.frame.width - 200, y: self.frame.height - (self.frame.height / 5) - 40)
+//        ninjaLiveLabelNode.name = "timeLabelNode"
+//        self.addChild(timeLabelNode)
     }
     
     // MARK: - 分数
     func addScore(){
         // NINJA
-        ninjaLiveLabelNode.text = "NINJA:\(ninjaLive)"
-        ninjaLiveLabelNode.color = SKColor.black
-        ninjaLiveLabelNode.fontSize = 60
+        ninjaLiveLabelNode.text = "Time:\(ninjaLive)"
+        ninjaLiveLabelNode.fontColor = SKColor.black
+        ninjaLiveLabelNode.fontSize = 40
         ninjaLiveLabelNode.setScale(1.0)
         ninjaLiveLabelNode.zPosition = 1
-        ninjaLiveLabelNode.position = CGPoint(x: 150, y: self.frame.height - (self.frame.height / 5))
+        ninjaLiveLabelNode.position = CGPoint(x: 150, y: self.frame.height - (self.frame.height / 5) - 40)
         ninjaLiveLabelNode.name = "ninjaLiveLabel"
         self.addChild(ninjaLiveLabelNode)
         
         // monster
         monsterScoreLabelNode.text = "MONSTER:\(monsterScore)"
-        monsterScoreLabelNode.color = SKColor.black
-        monsterScoreLabelNode.fontSize = 60
+        monsterScoreLabelNode.fontColor = SKColor.black
+        monsterScoreLabelNode.fontSize = 40
         monsterScoreLabelNode.setScale(1.0)
         monsterScoreLabelNode.zPosition = 1
-        monsterScoreLabelNode.position = CGPoint(x: 150 + 300, y: self.frame.height - (self.frame.height / 5))
+        monsterScoreLabelNode.position = CGPoint(x: 150 + 300, y: self.frame.height - (self.frame.height / 5)-40)
         monsterScoreLabelNode.name = "monsterLabel"
         self.addChild(monsterScoreLabelNode)
         
@@ -432,6 +484,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
             blinkAction,
             removeGreenAction,
             SKAction.run({ [weak self] in
+                /*
                 // 等待ACTION结束后 开始计分;
                 // monster score 加分
                 self?.ninjaLive -= 1
@@ -454,7 +507,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
                     })
                 }
                 self?.ninjaLiveLabelNode.text = "NINJA:\(self?.ninjaLive ?? 5)"
-                
+                */
             }),
             SKAction.run({
                 // 设次设置可以和Ninja发生碰撞

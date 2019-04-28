@@ -33,7 +33,7 @@
 
 #define HippoMoodTime 30
 
-#define HippoShitTime 30
+#define HippoShitTime 10
 
 #define HippoShitNumer 3
 

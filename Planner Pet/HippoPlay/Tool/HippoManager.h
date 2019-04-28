@@ -2,8 +2,8 @@
 //  HippoManager.h
 //  HippoPlay
 //
-//  Created by xlkd 24 on 2019/4/16.
-//  Copyright © 2019 xlkd 24. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/16.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -54,6 +54,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (HippoModel *)configDataWithModel;
+
+- (void)createTaskComplete;
+
+- (void)completeTask:(BOOL)isComplete;
+
+- (void)startPlayGame;
+
+- (void)takeShowerSuccess:(void (^)(float mood,float food,float exp,float clean))clearShitSuccess;
 @end
 
 NS_ASSUME_NONNULL_END

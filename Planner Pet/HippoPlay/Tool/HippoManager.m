@@ -2,11 +2,12 @@
 //  HippoManager.m
 //  HippoPlay
 //
-//  Created by xlkd 24 on 2019/4/16.
-//  Copyright © 2019 xlkd 24. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/16.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import "HippoManager.h"
+#import "JSUserDefaultTool.h"
 
 @interface HippoManager ()
 @property (nonatomic, strong) GCDTimer  *gcdTimer;
@@ -45,6 +46,7 @@ static HippoManager* _instance = nil;
     self.chooseBtnViewBlock = success;
     [self.gcdTimer event:^{
         //
+        //exp、mood、clean、food 随时间变化会有所变化
         [weakSelf configDataWithModel:[[HippoToolManager shareInstance] getCurrentTiem]];
         
     } timeInterval:NSEC_PER_SEC * 1.0];
@@ -130,6 +132,44 @@ static HippoManager* _instance = nil;
     NSString *endShitTime = model.changeShitTime;
     NSString *endCleanNumberTime = model.changeCleanTime;
     
+    
+    /*
+    if ([JSUserDefaultTool isCanShit]) {//指定的时间拉
+        [AppDelegate App].isShowShitAnmation = YES;
+        HippoModel *model = [[HippoManager shareInstance] configDataWithModel];
+        float moodNumber = model.mood;
+        float foodNumber = model.food;
+        float expNumber = model.exp;
+        float cleanNumber = model.clean;
+        int16_t shitNumber = model.shitNumber;
+        NSString *endDownStatus = model.downStatus;
+        NSString *endExpNumberTime = model.changeExpTime;
+        NSString *endMoodNumberTime = model.changeMoodTime;
+        NSString *endActionNumberTime = model.actionTime;
+        NSString *endShitTime = model.changeShitTime;
+        endShitTime = [[HippoToolManager shareInstance] getCurrentTiem];
+        endMoodNumberTime = [[HippoToolManager shareInstance] getCurrentTiem];
+        
+        [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber mood:moodNumber clean:cleanNumber shitNumber:shitNumber+1 downStatus:endDownStatus changeShitTime:endShitTime];
+    }
+     */
+    
+    int shitInt = (int)shitNumberTime;
+    int number = shitInt / HippoShitTime;//每隔30s会shitNumber会增加一次
+    int exShitNumber = shitNumber;
+    if (number > 0) {
+        
+//        float shitChangeNumber = (float)number;
+        shitNumber ++;
+        endShitTime = time;
+    }
+    if (exShitNumber != shitNumber) {
+        cleanNumber = cleanNumber-0.1<0?0:cleanNumber-0.1;
+    }
+    
+    [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber mood:moodNumber clean:cleanNumber shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
+    
+    /*
     if (cleanNumber == 0.00) {
         endCleanNumberTime = time;
     }else{
@@ -230,6 +270,7 @@ static HippoManager* _instance = nil;
     }
 
     [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber mood:moodNumber clean:cleanNumber shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
+     */
     if (self.chooseBtnViewBlock) {
         self.chooseBtnViewBlock(moodNumber,foodNumber,expNumber,cleanNumber,shitNumber);
     }
@@ -255,8 +296,8 @@ static HippoManager* _instance = nil;
     if (cleanNumber <= 0 || expNumber < 0.1) {
         
     } else {
-        cleanNumber = 1.0;
-        expNumber = expNumber - 0.1;
+        cleanNumber = (cleanNumber + 0.3)>1?1:cleanNumber + 0.3;
+        expNumber = (expNumber - 0.1)<0?0:expNumber - 0.1;
     }
     
     [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber mood:moodNumber clean:cleanNumber shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
@@ -294,16 +335,93 @@ static HippoManager* _instance = nil;
     NSString *endMoodNumberTime = model.changeMoodTime;
     NSString *endActionNumberTime = model.actionTime;
     NSString *endShitTime = model.changeShitTime; 
-    if (foodNumber < 0.3 || expNumber > 0.95) {
+    if (foodNumber < 0.2 || expNumber > 0.95) {
         eatFailure();
     } else {
-        foodNumber = foodNumber - 0.3;
-        expNumber = expNumber + 0.1;
+        foodNumber = (foodNumber - 0.2)<0?0:foodNumber - 0.2;
+        expNumber = (expNumber + 0.1)>1?1:expNumber + 0.1;
         [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber mood:moodNumber clean:cleanNumber shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
         eatSuccess(moodNumber,foodNumber,expNumber,cleanNumber);
     }
     
 }
+
+- (void)takeShowerSuccess:(void (^)(float mood,float food,float exp,float clean))clearShitSuccess
+{
+    HippoModel *model = [[HippoToolManager shareInstance] readData];
+    float moodNumber = model.mood;
+    float foodNumber = model.food;
+    float expNumber = model.exp;
+//    float cleanNumber = model.clean;
+    int16_t shitNumber = model.shitNumber;
+    NSString *endDownStatus = model.downStatus;
+    NSString *endExpNumberTime = model.changeExpTime;
+    NSString *endMoodNumberTime = model.changeMoodTime;
+    NSString *endActionNumberTime = model.actionTime;
+    NSString *endShitTime = model.changeShitTime;
+    
+    [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber-0.1<0?0:expNumber-0.1 mood:moodNumber clean:1 shitNumber:shitNumber+1 downStatus:endDownStatus changeShitTime:endShitTime];
+    clearShitSuccess(moodNumber,foodNumber,expNumber,1);
+}
+
+- (void)createTaskComplete
+{
+
+    
+    HippoModel *model = [[HippoToolManager shareInstance] readData];
+    float moodNumber = model.mood;
+    float foodNumber = model.food;
+    float expNumber = model.exp;
+    float cleanNumber = model.clean;
+    int16_t shitNumber = model.shitNumber;
+    NSString *endDownStatus = model.downStatus;
+    NSString *endExpNumberTime = model.changeExpTime;
+    NSString *endMoodNumberTime = model.changeMoodTime;
+    NSString *endActionNumberTime = model.actionTime;
+    NSString *endShitTime = model.changeShitTime;
+    
+    [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber mood:moodNumber clean:cleanNumber-0.3<0?0:cleanNumber-0.3 shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
+}
+
+- (void)completeTask:(BOOL)isComplete
+{
+    HippoModel *model = [[HippoToolManager shareInstance] readData];
+    float moodNumber = model.mood;
+    float foodNumber = model.food;
+    float expNumber = model.exp;
+    float cleanNumber = model.clean;
+    int16_t shitNumber = model.shitNumber;
+    NSString *endDownStatus = model.downStatus;
+    NSString *endExpNumberTime = model.changeExpTime;
+    NSString *endMoodNumberTime = model.changeMoodTime;
+    NSString *endActionNumberTime = model.actionTime;
+    NSString *endShitTime = model.changeShitTime;
+    
+    if (isComplete) {//完成
+        [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber+0.2>1?1:foodNumber+0.2 exp:expNumber mood:moodNumber-0.1<0?0:moodNumber-0.1 clean:cleanNumber-0.1<0?0:cleanNumber-0.1 shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
+    }else{//未完成
+        [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber-0.2<0?0:foodNumber-0.2 exp:expNumber mood:moodNumber+0.1>1?1:moodNumber+0.1 clean:cleanNumber+0.1>1?1:cleanNumber+0.1 shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
+    }
+    
+}
+
+- (void)startPlayGame
+{
+    HippoModel *model = [[HippoToolManager shareInstance] readData];
+    float moodNumber = model.mood;
+    float foodNumber = model.food;
+    float expNumber = model.exp;
+    float cleanNumber = model.clean;
+    int16_t shitNumber = model.shitNumber;
+    NSString *endDownStatus = model.downStatus;
+    NSString *endExpNumberTime = model.changeExpTime;
+    NSString *endMoodNumberTime = model.changeMoodTime;
+    NSString *endActionNumberTime = model.actionTime;
+    NSString *endShitTime = model.changeShitTime;
+    
+    [[HippoToolManager shareInstance] updateDataId:@"1" actionTime:endActionNumberTime changeExpTime:endExpNumberTime changeMoodTime:endMoodNumberTime food:foodNumber exp:expNumber-0.1<0?0:expNumber-0.1 mood:moodNumber clean:cleanNumber-0.1<0?0:cleanNumber-0.1 shitNumber:shitNumber downStatus:endDownStatus changeShitTime:endShitTime];
+}
+
 
 
 - (void)configDataWithAddFood:(CGFloat)food foodSuccess:(void (^)(float mood,float food,float exp,float clean))foodSuccess  {

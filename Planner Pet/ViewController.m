@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "HippoManager.h"
 
 @interface ViewController ()
 
@@ -58,6 +59,10 @@
     
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPalyGameNot) name:@"begainPlayGame" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endPlayGameNot:) name:@"endPlayGame" object:nil];
+    
     // [self.calendar selectDate:[self.dateFormatter dateFromString:@"2016/02/03"]];
     
     /*
@@ -68,7 +73,29 @@
      });
      });
      */
-    
+}
+
+//收到开始游戏的通知
+- (void)startPalyGameNot
+{
+    [[HippoManager shareInstance] startPlayGame];
+}
+
+//结束游戏的通知
+- (void)endPlayGameNot:(NSNotification *)not
+{
+    int score = [[not.userInfo objectForKey:@"score"] intValue];
+    NSLog(@"该局游戏获得的分数:%d",score);
+    if (score>10) {
+        [[HippoManager shareInstance] configDataWithAddMood:score / 10 + 1 moodSuccess:^(float mood, float food, float exp, float clean) {
+            
+        }];
+    }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -244,9 +271,13 @@
         ([task valueForKey:@"isChecked"]) ? NSLog(@"TRUE") : NSLog(@"FALSE");
         if([[task valueForKey:@"isChecked"]boolValue]){
             [task setValue:[NSNumber numberWithBool:NO] forKey:@"isChecked"];
+            //任务没有完成
+            [[HippoManager shareInstance] completeTask:NO];
             [_appDelegate saveContext];
         }else{
             [task setValue:[NSNumber numberWithBool:YES] forKey:@"isChecked"];
+            //任务完成
+            [[HippoManager shareInstance] completeTask:YES];
             [_appDelegate saveContext];
         }
         
