@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PetViewController : UIViewController
 
+
+- (UIImage*)resizeImageWithImage:(UIImage*)image toSize:(CGSize)newSize;
+
 @end
 
 NS_ASSUME_NONNULL_END
