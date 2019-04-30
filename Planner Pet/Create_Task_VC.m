@@ -8,6 +8,7 @@
 
 #import "Create_Task_VC.h"
 #import "HippoManager.h"
+@import UserNotifications;
 
 @interface Create_Task_VC ()
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -123,6 +124,32 @@
         
         [_appDelegate saveContext];
         
+        //Create Notification
+        
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.title = [NSString localizedUserNotificationStringForKey: @"Hippo is Sad! Why you no task!?" arguments:nil];
+        content.body = [NSString localizedUserNotificationStringForKey: _taskTitle.text arguments:nil];
+        content.sound = [UNNotificationSound defaultSound];
+
+        NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
+                                         components:NSCalendarUnitYear +
+                                         NSCalendarUnitMonth + NSCalendarUnitDay +
+                                         NSCalendarUnitHour + NSCalendarUnitMinute +
+                                         NSCalendarUnitSecond fromDate:_date];
+        NSLog(@"%d %d %d %d %d", triggerDate.year, triggerDate.month, triggerDate.day, triggerDate.hour, triggerDate.second);
+
+        UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate repeats:NO];
+
+        NSString *identifier = [NSString stringWithFormat:(@"%@%@"), _taskTitle, _addDate.text ];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
+//
+        [_appDelegate.center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Something went wrong: %@",error);
+            }
+        }];
+        
+        //End Create Notification
         
         _taskTitle.delegate = self;
         _taskDescView.delegate = self;

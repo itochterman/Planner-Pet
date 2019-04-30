@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import  <CoreData/CoreData.h>
+@import UserNotifications;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -25,6 +26,9 @@
 @property NSManagedObject * entity;
 
 @property (nonatomic,assign) BOOL isNotToday;//上次打开和本次打开是否是同一天
+
+@property UNUserNotificationCenter *center;
+@property UNAuthorizationOptions options;
 
 -(void) saveContext;
 
