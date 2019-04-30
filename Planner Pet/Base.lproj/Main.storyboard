@@ -69,23 +69,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0H-mW-BhD">
+                                <rect key="frame" x="135" y="24" width="105" height="33"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hi5-5E-bgf" secondAttribute="bottom" constant="20" id="004-Zw-DIL"/>
                             <constraint firstItem="hi5-5E-bgf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="A1D-ED-UUF"/>
+                            <constraint firstItem="F5P-Rn-W9X" firstAttribute="top" secondItem="x0H-mW-BhD" secondAttribute="bottom" constant="12" id="AdO-aC-w1r"/>
+                            <constraint firstItem="x0H-mW-BhD" firstAttribute="leading" secondItem="xWq-r2-2gU" secondAttribute="trailing" constant="8" id="CyN-cR-5cl"/>
                             <constraint firstItem="hu9-ar-208" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FBz-rV-Ut4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F5P-Rn-W9X" secondAttribute="trailing" constant="16" id="ISS-Px-wZz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hu9-ar-208" secondAttribute="trailing" constant="16" id="Qqc-wY-PB8"/>
                             <constraint firstItem="hi5-5E-bgf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SdY-Ar-4fO"/>
                             <constraint firstItem="xWq-r2-2gU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TFz-Ju-TVg"/>
+                            <constraint firstItem="hu9-ar-208" firstAttribute="leading" secondItem="x0H-mW-BhD" secondAttribute="trailing" constant="8" id="TKW-2D-pC8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F5P-Rn-W9X" secondAttribute="trailing" constant="16" id="WoP-YI-xgu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hi5-5E-bgf" secondAttribute="trailing" constant="16" id="ZTf-6r-mQJ"/>
                             <constraint firstItem="xWq-r2-2gU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="cYH-mP-mfI"/>
                             <constraint firstItem="F5P-Rn-W9X" firstAttribute="top" secondItem="hu9-ar-208" secondAttribute="bottom" constant="8" id="dth-t3-MO9"/>
                             <constraint firstItem="F5P-Rn-W9X" firstAttribute="top" secondItem="xWq-r2-2gU" secondAttribute="bottom" constant="8" id="heb-Ma-A85"/>
                             <constraint firstItem="hi5-5E-bgf" firstAttribute="top" secondItem="F5P-Rn-W9X" secondAttribute="bottom" constant="8" id="jhf-ns-3S6"/>
+                            <constraint firstItem="x0H-mW-BhD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="qKR-7W-fc7"/>
                             <constraint firstItem="F5P-Rn-W9X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="xyO-qd-1Mp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -93,6 +104,7 @@
                     <connections>
                         <outlet property="calendar" destination="F5P-Rn-W9X" id="hHp-ic-mR5"/>
                         <outlet property="createTask" destination="hu9-ar-208" id="jQF-Ru-GdI"/>
+                        <outlet property="currentDT" destination="x0H-mW-BhD" id="TUb-rL-Ezy"/>
                         <outlet property="petView" destination="xWq-r2-2gU" id="B8r-EY-prv"/>
                         <outlet property="tableView" destination="hi5-5E-bgf" id="5E7-VM-Jwn"/>
                         <segue destination="rhH-St-fRF" kind="presentation" identifier="taskView" id="cs8-N9-koU"/>
@@ -101,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813.04347826086962" y="26.086956521739133"/>
+            <point key="canvasLocation" x="-813.60000000000002" y="25.637181409295355"/>
         </scene>
         <!--Pet View Controller-->
         <scene sceneID="3mQ-6B-So0">

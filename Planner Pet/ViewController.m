@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UIButton *taskViewB;
+@property (weak, nonatomic) IBOutlet UILabel *currentDT;
 @property (weak, nonatomic) IBOutlet UIButton *createTask;
 @property NSDate * selectedDate;
 
@@ -56,6 +57,12 @@
     //Calendar Stuff
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"MMM dd h:mm a";
+    
+    NSDate * date = NSDate.date;
+    
+    NSString * daDate = [self.dateFormatter stringFromDate: date];
+    
+    _currentDT.text = daDate;
     
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
