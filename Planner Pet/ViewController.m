@@ -356,6 +356,12 @@
         NSManagedObject * task = (NSManagedObject *) sender;
         segueDest.task = task;
     }
+    if ([segue.identifier isEqualToString:@"createNewTask"]) {
+        Create_Task_VC * cTask = [segue destinationViewController];
+        //Create_Task_VC * segueDest = [segue destinationViewController];
+       // NSManagedObject * task = (NSManagedObject *) sender;
+        cTask.date = _selectedDate;
+    }
 }
 
 
@@ -389,6 +395,7 @@
 {
     calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
 }
+
 
 #pragma mark - <FSCalendarDataSource>
 //deleted

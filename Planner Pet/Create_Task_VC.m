@@ -27,7 +27,9 @@
     
     NSLog(_taskDescView.text);
     
-    _taskDescView.layer.cornerRadius=_taskDescView.frame.size.height/10.0;
+    NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
+    dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
+    _addDate.text = [dateForm stringFromDate: _date];
     
     self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height/6.66;
     self.cancelButton.clipsToBounds = YES;
@@ -69,6 +71,8 @@
 
 - (IBAction)touchDate:(id)sender {
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    
+    [datePicker setDate:_date];
     [self.addDate setInputView:datePicker];
     [datePicker addTarget:self action:@selector(saveDate:)
          forControlEvents:UIControlEventValueChanged];
