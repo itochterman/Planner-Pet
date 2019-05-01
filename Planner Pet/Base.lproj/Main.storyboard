@@ -532,6 +532,7 @@
                         <outlet property="addDate" destination="aWs-iJ-caZ" id="J0x-Ze-L7U"/>
                         <outlet property="cancelButton" destination="pPG-ZJ-pQV" id="V8a-Mj-QZR"/>
                         <outlet property="createTaskButton" destination="u6X-PZ-otE" id="gGX-Uu-8AX"/>
+                        <outlet property="dateLabel" destination="X77-QL-pKm" id="FDl-hy-Nnn"/>
                         <outlet property="taskDescView" destination="N0A-5Y-fJN" id="2tQ-2f-IUn"/>
                         <outlet property="taskTitle" destination="3x9-gH-ETZ" id="IaL-dx-UuW"/>
                         <outlet property="warningLabel" destination="qCR-Js-eFk" id="Mzo-vN-hSB"/>

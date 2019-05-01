@@ -17,6 +17,7 @@
 
 @property BOOL filledOut;
 
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -83,12 +84,25 @@
 
 //
 -(void) saveDate: (UIDatePicker *) picker{
-    _date = picker.date;
-    NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
-    dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
-    _addDate.text = [dateForm stringFromDate: _date];
-    
-    NSLog([dateForm stringFromDate: _date]);
+    NSComparisonResult * result= [_date compare: NSDate.date];
+    if(result != NSOrderedAscending){
+        _date = picker.date;
+        NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
+        dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
+        _addDate.text = [dateForm stringFromDate: _date];
+        
+        NSLog([dateForm stringFromDate: _date]);
+
+    }
+
+    else{
+        NSLog(@"ERROR: ENTER AN UPCOMING TIME.");
+        _dateLabel.text = @"Error: Invalid date/time.";
+        _dateLabel.textColor = [UIColor blackColor];
+        _dateLabel.backgroundColor = [UIColor redColor];
+        
+        
+    }
     
 }
 
