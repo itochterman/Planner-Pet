@@ -111,8 +111,7 @@
 		4630925D22614DF800CAC5B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4630925C22614DF800CAC5B2 /* CoreData.framework */; };
 		46309266226159DF00CAC5B2 /* Create_Task_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46309265226159DF00CAC5B2 /* Create_Task_VC.m */; };
 		4630926B2268C2A900CAC5B2 /* Task_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4630926A2268C2A900CAC5B2 /* Task_VC.m */; };
-		D9F301FF2278FC9F00B4212A /* sand.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F301FE2278FC9F00B4212A /* sand.jpg */; };
-		D9F30202227909AA00B4212A /* hippoEn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F30201227909A900B4212A /* hippoEn.jpg */; };
+		D9F30204227AB0C900B4212A /* hippoEn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F30203227AB0C700B4212A /* hippoEn.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,8 +329,8 @@
 		46309265226159DF00CAC5B2 /* Create_Task_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Create_Task_VC.m; sourceTree = "<group>"; };
 		463092692268C2A900CAC5B2 /* Task_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task_VC.h; sourceTree = "<group>"; };
 		4630926A2268C2A900CAC5B2 /* Task_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task_VC.m; sourceTree = "<group>"; };
-		D9F301FE2278FC9F00B4212A /* sand.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sand.jpg; path = ../../../Downloads/sand.jpg; sourceTree = "<group>"; };
 		D9F30201227909A900B4212A /* hippoEn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hippoEn.jpg; path = ../../../../Downloads/hippoEn.jpg; sourceTree = "<group>"; };
+		D9F30203227AB0C700B4212A /* hippoEn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hippoEn.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,7 +362,7 @@
 		035B3D5D225D74AB001AB576 = {
 			isa = PBXGroup;
 			children = (
-				D9F301FE2278FC9F00B4212A /* sand.jpg */,
+				D9F30203227AB0C700B4212A /* hippoEn.jpg */,
 				4630925E2261524500CAC5B2 /* Task+CoreDataProperties.h */,
 				463092612261524500CAC5B2 /* Task+CoreDataProperties.m */,
 				4630925F2261524500CAC5B2 /* Task+CoreDataClass.h */,
@@ -881,16 +880,15 @@
 				0319A540226E568F00633578 /* checked.png in Resources */,
 				32C7FB882272BDC5001D3F2D /* background-music-aac.caf in Resources */,
 				32C7FBBA2272BDC5001D3F2D /* NinjaPiggyNoShadow.atlas in Resources */,
-				D9F301FF2278FC9F00B4212A /* sand.jpg in Resources */,
 				035B3D71225D74AB001AB576 /* Main.storyboard in Resources */,
 				32C7FB7B2272BDC5001D3F2D /* GameWon.sks in Resources */,
 				32C7FB952272BDC5001D3F2D /* HippoViewController.xib in Resources */,
 				32C7FB7E2272BDC5001D3F2D /* GameStart.sks in Resources */,
 				32C7FBB92272BDC5001D3F2D /* NinjaPiggy.atlas in Resources */,
 				32C7FB852272BDC5001D3F2D /* ProjectileTrail.sks in Resources */,
+				D9F30204227AB0C900B4212A /* hippoEn.jpg in Resources */,
 				32C7FB8A2272BDC5001D3F2D /* yew-yew.wav in Resources */,
 				0319A541226E568F00633578 /* unchecked.png in Resources */,
-				D9F30202227909AA00B4212A /* hippoEn.jpg in Resources */,
 				32C7FB8C2272BDC5001D3F2D /* pew-pew-lei.caf in Resources */,
 				32C7FBCE227359F5001D3F2D /* SVProgressHUD.bundle in Resources */,
 			);
