@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UIButton *taskViewB;
+@property (weak, nonatomic) IBOutlet UILabel *currentDT;
 @property (weak, nonatomic) IBOutlet UIButton *createTask;
 @property NSDate * selectedDate;
 
@@ -56,6 +57,12 @@
     //Calendar Stuff
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"MMM dd h:mm a";
+    
+    NSDate * date = NSDate.date;
+    
+    NSString * daDate = [self.dateFormatter stringFromDate: date];
+    
+    _currentDT.text = daDate;
     
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
@@ -349,6 +356,12 @@
         NSManagedObject * task = (NSManagedObject *) sender;
         segueDest.task = task;
     }
+    if ([segue.identifier isEqualToString:@"createNewTask"]) {
+        Create_Task_VC * cTask = [segue destinationViewController];
+        //Create_Task_VC * segueDest = [segue destinationViewController];
+       // NSManagedObject * task = (NSManagedObject *) sender;
+        cTask.date = _selectedDate;
+    }
 }
 
 
@@ -382,6 +395,7 @@
 {
     calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
 }
+
 
 #pragma mark - <FSCalendarDataSource>
 //deleted

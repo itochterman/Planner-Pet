@@ -8,6 +8,7 @@
 
 #import "Create_Task_VC.h"
 #import "HippoManager.h"
+@import UserNotifications;
 
 @interface Create_Task_VC ()
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -16,6 +17,7 @@
 
 @property BOOL filledOut;
 
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -26,7 +28,9 @@
     
     NSLog(_taskDescView.text);
     
-    _taskDescView.layer.cornerRadius=_taskDescView.frame.size.height/10.0;
+    NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
+    dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
+    _addDate.text = [dateForm stringFromDate: _date];
     
     self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height/6.66;
     self.cancelButton.clipsToBounds = YES;
@@ -68,6 +72,8 @@
 
 - (IBAction)touchDate:(id)sender {
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    
+    [datePicker setDate:_date];
     [self.addDate setInputView:datePicker];
     [datePicker addTarget:self action:@selector(saveDate:)
          forControlEvents:UIControlEventValueChanged];
@@ -78,12 +84,25 @@
 
 //
 -(void) saveDate: (UIDatePicker *) picker{
-    _date = picker.date;
-    NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
-    dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
-    _addDate.text = [dateForm stringFromDate: _date];
-    
-    NSLog([dateForm stringFromDate: _date]);
+    NSComparisonResult * result= [_date compare: NSDate.date];
+    if(result != NSOrderedAscending){
+        _date = picker.date;
+        NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
+        dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
+        _addDate.text = [dateForm stringFromDate: _date];
+        
+        NSLog([dateForm stringFromDate: _date]);
+
+    }
+
+    else{
+        NSLog(@"ERROR: ENTER AN UPCOMING TIME.");
+        _dateLabel.text = @"Error: Invalid date/time.";
+        _dateLabel.textColor = [UIColor blackColor];
+        _dateLabel.backgroundColor = [UIColor redColor];
+        
+        
+    }
     
 }
 
@@ -123,6 +142,32 @@
         
         [_appDelegate saveContext];
         
+        //Create Notification
+        
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.title = [NSString localizedUserNotificationStringForKey: @"Hippo is Sad! Why you no task!?" arguments:nil];
+        content.body = [NSString localizedUserNotificationStringForKey: _taskTitle.text arguments:nil];
+        content.sound = [UNNotificationSound defaultSound];
+
+        NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
+                                         components:NSCalendarUnitYear +
+                                         NSCalendarUnitMonth + NSCalendarUnitDay +
+                                         NSCalendarUnitHour + NSCalendarUnitMinute +
+                                         NSCalendarUnitSecond fromDate:_date];
+        NSLog(@"%d %d %d %d %d", triggerDate.year, triggerDate.month, triggerDate.day, triggerDate.hour, triggerDate.second);
+
+        UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate repeats:NO];
+
+        NSString *identifier = [NSString stringWithFormat:(@"%@%@"), _taskTitle, _addDate.text ];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
+//
+        [_appDelegate.center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Something went wrong: %@",error);
+            }
+        }];
+        
+        //End Create Notification
         
         _taskTitle.delegate = self;
         _taskDescView.delegate = self;

@@ -64,15 +64,40 @@
     self.data.layer.cornerRadius = self.data.frame.size.height/6.66;
     self.data.clipsToBounds = YES;
     
-    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
-    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];
+//    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
+//    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];\
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sand.jpg"]];
     
+    UIImage * backgroundImage = [UIImage imageNamed:@"hippoEn.jpg"];
+    
+   // [self resizeImageWithImage: backgroundImage toSize: CGSizeMake(100, 200)];
+    
+    UIImageView * imageBack = [[UIImageView  alloc] initWithFrame: self.view.bounds];
+    [imageBack setImage: backgroundImage];
+    [self.view addSubview:imageBack];
+    [self.view sendSubviewToBack:imageBack];
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
     [self setLabels];
     [_dataView setHidden:YES];
-    
+
     [self configUI];
+}
+    
+- (UIImage*)resizeImageWithImage:(UIImage*)image toSize:(CGSize)newSize{
+        // Create a graphics image context
+        UIGraphicsBeginImageContext(newSize);
+        
+        // draw in new context, with the new size
+        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+        
+        // Get the new image from the context
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        // End the context
+        UIGraphicsEndImageContext();
+        return newImage;
+
 }
 
 - (void)configUI {

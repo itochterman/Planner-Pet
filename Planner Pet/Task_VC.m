@@ -34,6 +34,9 @@
     _taskTitle.text = [self.task valueForKey: @"title"];
     _taskDetail.text = [self.task valueForKey: @"describe"];
     
+    _taskTitle.delegate = self;
+    _taskTitle.delegate = self;
+    
     NSDate * taskDate = [self.task valueForKey: @"dateStart"];
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"MMM dd h:mm a";
@@ -50,9 +53,13 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)doneButtonPress:(id)sender {
+    [self.task setValue: _taskDetail.text forKey: @"describe"];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return NO;
+}
 /*
 #pragma mark - Navigation
 

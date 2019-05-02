@@ -20,6 +20,18 @@
 
     [JSUserDefaultTool initUserDefaultTool];
     
+    
+    //Sets up notification center
+    _center = [UNUserNotificationCenter currentNotificationCenter];
+    _options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
+    
+    [_center requestAuthorizationWithOptions: _options
+completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    if (!granted) {
+        NSLog(@"Something went wrong");
+    }
+}];
+    
     //存储当前打开的时间
     
     
