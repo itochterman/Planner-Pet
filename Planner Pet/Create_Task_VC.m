@@ -31,6 +31,7 @@
     NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
     dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
     _addDate.text = [dateForm stringFromDate: _date];
+    _addDate.delegate = self;
     
     self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height/6.66;
     self.cancelButton.clipsToBounds = YES;
@@ -72,6 +73,14 @@
 {
     
     
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == _addDate){
+        return NO;
+    }
+    else{
+        return YES;
+    }
 }
 
 - (IBAction)touchDate:(id)sender {
