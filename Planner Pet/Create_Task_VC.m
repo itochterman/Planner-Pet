@@ -38,6 +38,7 @@
     self.createTaskButton.layer.cornerRadius = self.createTaskButton.frame.size.height/6.66;
     self.createTaskButton.clipsToBounds = YES;
     
+    self.taskDescView.layer.cornerRadius = self.taskDescView.layer.frame.size.height/12;
     _taskDescView.clipsToBounds=YES;
     
     
@@ -57,6 +58,8 @@
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
     
+    
+    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -71,6 +74,9 @@
 }
 
 - (IBAction)touchDate:(id)sender {
+    _dateLabel.text = @"Date: ";
+    _dateLabel.textColor = [UIColor redColor];
+    _dateLabel.backgroundColor = [UIColor clearColor];
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
     
     [datePicker setDate:_date];
@@ -84,8 +90,10 @@
 
 //
 -(void) saveDate: (UIDatePicker *) picker{
+    
     NSComparisonResult * result= [_date compare: NSDate.date];
     if(result != NSOrderedAscending){
+
         _date = picker.date;
         NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
         dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
