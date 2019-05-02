@@ -13,7 +13,7 @@
 #import "HippoBodyStatusView.h"
 #import "HippoManager.h"
 #import "YYWebImage.h"
-#import "YBPopupMenu.h"
+//#import "YBPopupMenu.h"
 
 @interface HippoMainView ()<YBPopupMenuDelegate>
 
@@ -32,10 +32,11 @@
 @property (nonatomic,strong)NSMutableArray *toiletImageAry;
 @property (nonatomic,strong)NSMutableArray *cleanImageAry;
 @property (nonatomic,strong)NSMutableArray *relaxImageAry;
-
+@property (nonatomic,strong)NSMutableArray *showerImageAry;
+//@property (nonatomic,strong)YBPopupMenu *cleanMenu;
 @property (nonatomic,assign)NSInteger currentShitNumber;
 
-@property (nonatomic, strong) YBPopupMenu *popupMenu;
+
 
 @property (nonatomic,assign) float mood;
 @property (nonatomic,assign) float food;
@@ -237,6 +238,7 @@
 - (void)configClickHippoAnimation:(NSArray *)imageAry andDurationTime:(NSTimeInterval)time andRepeatCount:(NSInteger)number {
 
     if (!self.hippoBackImageView.isAnimating) {
+        
         [self.hippoBackImageView setAnimationImages:imageAry];
         
         [self.hippoBackImageView setAnimationDuration:time];
@@ -402,19 +404,23 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf configClickHippoAnimation:[weakSelf.toiletImageAry copy] andDurationTime:4.0 andRepeatCount:1];
                 [weakSelf.popupMenu dismiss];
-                weakSelf.popupMenu = [YBPopupMenu showRelyOnView:self.hippoBackImageView titles:@[@"Clean, Clean, Clean!!! 💩"] icons:nil menuWidth:self.hippoBackImageView.bounds.size.width otherSettings:^(YBPopupMenu *popupMenu) {
-                    popupMenu.delegate = self;
-                    popupMenu.showMaskView = NO;
-                    popupMenu.priorityDirection = YBPopupMenuPriorityDirectionBottom;
-                    popupMenu.maxVisibleCount = 1;
-                    popupMenu.itemHeight = 45;
-                    popupMenu.borderWidth = 1;
-                    popupMenu.fontSize = 12;
-                    popupMenu.dismissOnTouchOutside = YES;
-                    popupMenu.dismissOnSelected = NO;
-                    popupMenu.borderColor = [UIColor brownColor];
-                    popupMenu.textColor = [UIColor brownColor];
-                }];
+                if (weakSelf.isShow) {
+                    weakSelf.popupMenu = [YBPopupMenu showRelyOnView:self.hippoBackImageView titles:@[@"Clean, Clean, Clean!!! 💩"] icons:nil menuWidth:self.hippoBackImageView.bounds.size.width otherSettings:^(YBPopupMenu *popupMenu) {
+                        popupMenu.delegate = self;
+                        popupMenu.showMaskView = NO;
+                        popupMenu.priorityDirection = YBPopupMenuPriorityDirectionBottom;
+                        popupMenu.maxVisibleCount = 1;
+                        popupMenu.itemHeight = 45;
+                        popupMenu.borderWidth = 1;
+                        popupMenu.fontSize = 12;
+                        popupMenu.dismissOnTouchOutside = YES;
+                        popupMenu.dismissOnSelected = NO;
+                        popupMenu.borderColor = [UIColor brownColor];
+                        popupMenu.textColor = [UIColor brownColor];
+                    }];
+                
+                }
+                
             });
             return;
         }
@@ -531,7 +537,7 @@
             }
             break;
         }
-        case 999://点击洗澡
+        case 999://click shower 点击洗澡
         {
             bool isSelect = YES;
             if (isSelect) {
@@ -540,7 +546,7 @@
                 if (weakSelf.clean >= 0.95) {
                     [SVProgressHUD showInfoWithStatus:@"I am a CLEAN little cute hippo, NO extra showering, so we save water!!!"];
                     [SVProgressHUD dismissWithDelay:1.0];
-                    [weakSelf configClickHippoAnimation:[weakSelf.shakeYourHeadImageAry copy] andDurationTime:3.0 andRepeatCount:1.0];
+                    [weakSelf configClickHippoAnimation:[weakSelf.showerImageAry copy] andDurationTime:6.0 andRepeatCount:1.0];
                 }else{
                     if (weakSelf.exp < 0.1) {
                         [SVProgressHUD showErrorWithStatus:@"exp not enough"];
@@ -549,7 +555,7 @@
                         [[HippoManager shareInstance] takeShowerSuccess:^(float mood, float food, float exp,float clean) {
                             [weakSelf.popupMenu dismiss];
                             if ([weakSelf.subviews containsObject:weakSelf.hippoBodyView]) {
-                                [weakSelf configClickHippoAnimation:[weakSelf.cleanImageAry copy] andDurationTime:2.0 andRepeatCount:1];
+                                [weakSelf configClickHippoAnimation:[weakSelf.showerImageAry copy] andDurationTime:2.0 andRepeatCount:1];
                                 [weakSelf.hippoBodyView configChangeUIWithData:mood andExpNumber:exp andFoodNumber:food andCleanNumber:clean];
                             }
                         }];
@@ -603,6 +609,9 @@
             break;
         }
         case 60://click clean
+            
+            NSLog(@"CLEAN CLICKED ld");
+            
             break;
         default:
             break;
@@ -641,6 +650,19 @@
 //    }
 //    return _titleImageView;
 //}
+
+- (NSMutableArray *)showerImageAry {
+    if (!_showerImageAry) {
+        _showerImageAry = [NSMutableArray array];
+        for (int i = 1; i < 71; i++) {
+            NSString *imageText = [NSString stringWithFormat:@"shower00%d",i];
+            UIImage *image = [UIImage imageNamed:imageText];
+            [_showerImageAry addObject:image];
+        }
+    }
+    return _showerImageAry;
+}
+
 - (NSMutableArray *)runImageAry {
     if (!_runImageAry) {
         _runImageAry = [NSMutableArray array];
@@ -751,8 +773,6 @@
     }
     return _relaxImageAry;
 }
-
-
 #pragma mark - YBPopupMenuDelegate
 - (void)ybPopupMenu:(YBPopupMenu *)ybPopupMenu didSelectedAtIndex:(NSInteger)index
 {

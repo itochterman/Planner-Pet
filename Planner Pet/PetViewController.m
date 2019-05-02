@@ -41,6 +41,17 @@
 
 @implementation PetViewController
 
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    if (self.hippoMianView.popupMenu) {
+        [self.hippoMianView.popupMenu dismiss];
+        self.hippoMianView.popupMenu.isShow = NO;
+//        self.hippoMianView.popupMenu = nil;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -321,6 +332,7 @@
         _hippoMianView = [[HippoMainView alloc]initWithEnterAction:^{
             [weakSelf configHippoPlayGame];
         }];
+        _hippoMianView.isShow = YES;
     }
     return _hippoMianView;
 }
