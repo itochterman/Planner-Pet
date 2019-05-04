@@ -56,7 +56,7 @@
     
     //Calendar Stuff
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"MMM dd";
+    self.dateFormatter.dateFormat = @"h:mm a";
     
     NSDate * date = NSDate.date;
     
@@ -161,7 +161,7 @@
     }
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    cell.backgroundColor = [UIColor colorWithRed:0 green:120/255.0 blue:120/255.0 alpha:0.8];
+    cell.backgroundColor = [UIColor colorWithRed:12/255.0 green:71/255.0 blue:79/255.0 alpha:1];
     
     
     NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -197,7 +197,7 @@
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"h:mm a";
     date.text = [format stringFromDate:taskDate];
-    date.textColor = [UIColor whiteColor];
+    date.textColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1];
     date.font=[date.font fontWithSize:15];
     
     [cell.contentView addSubview:date];
@@ -426,7 +426,11 @@
     
     NSArray *results = [moc executeFetchRequest:request error: nil ];
     
-    return [results count];
+    if ([results count]>0){
+        return 1;
+    }else{
+        return 0;
+    };
 }
 
 

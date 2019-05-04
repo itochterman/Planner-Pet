@@ -33,7 +33,6 @@
 		035B3D79225D74AD001AB576 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D78225D74AD001AB576 /* main.m */; };
 		035B3D83225D74AE001AB576 /* Planner_PetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D82225D74AE001AB576 /* Planner_PetTests.m */; };
 		035B3D8E225D74AE001AB576 /* Planner_PetUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B3D8D225D74AE001AB576 /* Planner_PetUITests.m */; };
-		0383641A227E0F2C0077DDEA /* 29175.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03836419227E0F2C0077DDEA /* 29175.jpg */; };
 		32C7FB772272BDC5001D3F2D /* Bomb.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 32C7FAEB2272BDC4001D3F2D /* Bomb.atlas */; };
 		32C7FB782272BDC5001D3F2D /* YBRectConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C7FAEE2272BDC4001D3F2D /* YBRectConst.m */; };
 		32C7FB792272BDC5001D3F2D /* YBPopupMenuPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C7FAEF2272BDC4001D3F2D /* YBPopupMenuPath.m */; };
@@ -186,7 +185,6 @@
 		035B3D89225D74AE001AB576 /* Planner PetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Planner PetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		035B3D8D225D74AE001AB576 /* Planner_PetUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Planner_PetUITests.m; sourceTree = "<group>"; };
 		035B3D8F225D74AE001AB576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03836419227E0F2C0077DDEA /* 29175.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 29175.jpg; sourceTree = "<group>"; };
 		32C7FAEB2272BDC4001D3F2D /* Bomb.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bomb.atlas; sourceTree = "<group>"; };
 		32C7FAED2272BDC4001D3F2D /* YBPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBPopupMenu.h; sourceTree = "<group>"; };
 		32C7FAEE2272BDC4001D3F2D /* YBRectConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBRectConst.m; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 			isa = PBXGroup;
 			children = (
 				D9F30201227909A900B4212A /* hippoEn.jpg */,
-				03836419227E0F2C0077DDEA /* 29175.jpg */,
 				32C7FAEA2272BC47001D3F2D /* HippoPlay */,
 				0319A6FE226E5CA400633578 /* FSCalendarCollectionView.m */,
 				0319A6FD226E5CA400633578 /* FSCalendarWeekdayView.h */,
@@ -887,7 +884,6 @@
 				32C7FB7B2272BDC5001D3F2D /* GameWon.sks in Resources */,
 				32C7FB952272BDC5001D3F2D /* HippoViewController.xib in Resources */,
 				32C7FB7E2272BDC5001D3F2D /* GameStart.sks in Resources */,
-				0383641A227E0F2C0077DDEA /* 29175.jpg in Resources */,
 				32C7FBB92272BDC5001D3F2D /* NinjaPiggy.atlas in Resources */,
 				32C7FB852272BDC5001D3F2D /* ProjectileTrail.sks in Resources */,
 				D9F30204227AB0C900B4212A /* hippoEn.jpg in Resources */,
@@ -1188,9 +1184,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6TA982FFLF;
+				DEVELOPMENT_TEAM = HB6WCZLH75;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1202,8 +1199,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-PetB";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Planner Pet/HippoPlay/Game/NinjaPiggy/HippoPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1214,9 +1212,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6TA982FFLF;
+				DEVELOPMENT_TEAM = HB6WCZLH75;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1228,8 +1227,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-PetB";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Planner Pet/HippoPlay/Game/NinjaPiggy/HippoPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

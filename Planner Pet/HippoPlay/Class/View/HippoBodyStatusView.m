@@ -216,7 +216,13 @@
         _leftBtn = [[UIButton alloc]init];
         [_leftBtn addTarget:self action:@selector(clickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 //        [_leftBtn setTitle:@"playGame" forState:UIControlStateNormal];
-        [_leftBtn setImage:[UIImage imageNamed:@"youxi_2"] forState:UIControlStateNormal];
+        UIImage * img =[UIImage imageNamed:@"youxi_2"];
+        [_leftBtn setImage: img forState:UIControlStateNormal];
+        _leftBtn.backgroundColor = [UIColor whiteColor];
+        _leftBtn.layer.cornerRadius = 10;
+        _leftBtn.clipsToBounds = YES;
+        _leftBtn.layer.borderColor = [UIColor blueColor].CGColor;
+        _leftBtn.layer.borderWidth = 3.0f;
 //        [_leftBtn setBackgroundImage:[UIImage imageNamed:@"youxi"] forState:UIControlStateNormal];
         _leftBtn.tag = 10;
     }
@@ -228,6 +234,11 @@
         [_rightBtn addTarget:self action:@selector(clickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 //        [_rightBtn setTitle:@"clear" forState:UIControlStateNormal];
         [_rightBtn setImage:[UIImage imageNamed:@"qingsao"] forState:UIControlStateNormal];
+        _rightBtn.backgroundColor = [UIColor whiteColor];
+        _rightBtn.layer.cornerRadius = 10;
+        _rightBtn.clipsToBounds = YES;
+        _rightBtn.layer.borderColor = [UIColor blueColor].CGColor;
+        _rightBtn.layer.borderWidth = 3.0f;
 //        [_rightBtn setBackgroundImage:[UIImage imageNamed:@"qingli"] forState:UIControlStateNormal];
         _rightBtn.tag = 20;
     }
@@ -241,6 +252,11 @@
         [_centerBtn addTarget:self action:@selector(clickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         //        [_rightBtn setTitle:@"clear" forState:UIControlStateNormal];
         [_centerBtn setImage:[UIImage imageNamed:@"xizao"] forState:UIControlStateNormal];
+        _centerBtn.backgroundColor = [UIColor whiteColor];
+        _centerBtn.layer.cornerRadius = 10;
+        _centerBtn.clipsToBounds = YES;
+        _centerBtn.layer.borderColor = [UIColor blueColor].CGColor;
+        _centerBtn.layer.borderWidth = 3.0f;
         //        [_rightBtn setBackgroundImage:[UIImage imageNamed:@"qingli"] forState:UIControlStateNormal];
         _centerBtn.tag = 999;
     }

@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="41" id="eiA-Vj-Cw2"/>
                                 </constraints>
                                 <state key="normal" title="Create Task">
-                                    <color key="titleColor" red="0.58002457080000003" green="0.89388438680000004" blue="0.91094939720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.90773715099999996" green="0.75287177220000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="creatTaskBP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hv2-ls-2Mr"/>
@@ -41,22 +41,25 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                        <color key="value" red="0.91190117385786806" green="0.89643923626468813" blue="0.3139088724633447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.90773715101522845" green="0.75287177220804058" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
                                         <color key="value" red="0.98992840715579677" green="1" blue="0.94468817962296459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                        <color key="value" red="0.54550803390807756" green="0.83351623761703009" blue="0.85763007614213205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.096476097562725446" green="0.61677917638404467" blue="0.68779743020304562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="0.77615402918781728" green="0.35488165139656869" blue="0.47282648511876713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.69844543147208116" green="0.0" blue="0.26833459690997918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                        <color key="value" red="0.2824201316320758" green="0.50634678345243667" blue="0.7189879441624365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.04616440087556839" green="0.27842360734939575" blue="0.30824640393257141" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
                                         <color key="value" red="0.75337994100000005" green="0.17382973430000001" blue="0.1142945066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
+                                        <color key="value" red="0.75487785529999996" green="0.1722831927" blue="0.11566437189999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -68,7 +71,7 @@
                                 <rect key="frame" x="16" y="20" width="111" height="41"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <state key="normal" title="Pet View">
-                                    <color key="titleColor" red="0.58002457080000003" green="0.89388438680000004" blue="0.91094939720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.90773715099999996" green="0.75287177220000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="viewTaskBP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vDQ-Bm-YHa"/>
@@ -78,6 +81,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hi5-5E-bgf">
                                 <rect key="frame" x="16" y="314" width="343" height="333"/>
                                 <color key="backgroundColor" red="0.15601645383514487" green="0.16638621402520046" blue="0.18291584242741121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="66" id="Tyw-lw-yAe">
                                         <rect key="frame" x="0.0" y="28" width="343" height="66"/>
@@ -149,13 +153,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-kf-kSh">
                                 <rect key="frame" x="20" y="20" width="85" height="46"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.2037303579426695" green="0.21727146148250506" blue="0.23885628172588835" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="02V-1Z-kmU"/>
                                     <constraint firstAttribute="height" constant="46" id="VkN-27-I7q"/>
                                 </constraints>
                                 <state key="normal" title="Back">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.90773715099999996" green="0.75287177220000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="back:" destination="by4-Hb-Zd5" eventType="touchUpInside" id="dZ2-tk-1wF"/>
@@ -292,6 +296,10 @@
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6x-Si-Eud">
+                                        <rect key="frame" x="29" y="301" width="277" height="277"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -300,13 +308,14 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxY-U1-2eb">
                                 <rect key="frame" x="270" y="20" width="85" height="46"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.20528632614213202" green="0.21893084837079912" blue="0.24068052030456855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="39g-EM-1ay"/>
                                     <constraint firstAttribute="height" constant="46" id="ED9-08-OkC"/>
                                 </constraints>
+                                <color key="tintColor" red="0.8084747779" green="0.17826511049999999" blue="0.11724197510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Data">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.90773715099999996" green="0.75287177220000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didSelectDataButton:" destination="by4-Hb-Zd5" eventType="touchUpInside" id="oPT-UH-ody"/>

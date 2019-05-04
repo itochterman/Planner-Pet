@@ -639,6 +639,7 @@
 - (UIImageView *)hippoEatToolImageView {
     if (!_hippoEatToolImageView) {
         _hippoEatToolImageView = [[UIImageView alloc]init];
+        
 //        _hippoEatToolImageView.image = [UIImage imageNamed:@"eatTool"];
     }
     return _hippoEatToolImageView;

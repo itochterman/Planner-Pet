@@ -32,6 +32,14 @@
         self.enterActionBlock = enterActionBlock;
         [self summer_setupViews];
         [self summer_bindViewModel];
+        if (titleName==@"food"){
+            _enterImageView.backgroundColor = [UIColor whiteColor];
+            _enterImageView.layer.cornerRadius = 10;
+            _enterImageView.clipsToBounds = YES;
+            _enterImageView.layer.borderColor = [UIColor blueColor].CGColor;
+            _enterImageView.layer.borderWidth = 3.0f;
+            
+        }
         
     }
     return self;
@@ -70,6 +78,7 @@
         make.bottom.equalTo(weakSelf.mas_bottom).offset(-STSizeWithWidth(10.0));
         make.height.width.mas_equalTo(STSizeWithWidth(60.0));
     }];
+
     [self addSubview:self.enterBtn];
     [self.enterBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.mas_left);

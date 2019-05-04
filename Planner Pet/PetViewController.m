@@ -55,9 +55,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    CAGradientLayer *myFkngAwsmGrad = [[CAGradientLayer alloc] init];
-    [myFkngAwsmGrad setColors:@[(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor]]];
-    myFkngAwsmGrad.frame = self.view.bounds;
     self.back.layer.cornerRadius = self.back.frame.size.height/6.66;
     self.back.clipsToBounds = YES;
     
@@ -67,6 +64,9 @@
     self.dataView.layer.cornerRadius = self.dataView.frame.size.height/30;
     self.dataView.clipsToBounds = YES;
     self.dataView.backgroundColor = [UIColor colorWithRed:0 green:(120/255.0) blue:(120/255.0) alpha:0.5];
+    
+    [SVProgressHUD showInfoWithStatus:@"Double tap on Mr. Hippo and his buttons!"];
+    [SVProgressHUD dismissWithDelay:3.0];
     
 //    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
 //    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];\
@@ -355,8 +355,8 @@
 - (void)configHippoPlayGame {
     HippoModel *model = [[HippoManager shareInstance] configDataWithModel];
     if (model.exp < 0.5 || model.clean <= 0) {
-        [SVProgressHUD showErrorWithStatus:@"I’m too HUNGRY to play games with u now"];
-        [SVProgressHUD dismissWithDelay:1.0];
+        [SVProgressHUD showErrorWithStatus:@"I’m too HUNGRY to play games with u now. \n\n Do some tasks and feed me cheeseburgers!"];
+        [SVProgressHUD dismissWithDelay:3.0];
         return;
     }
     UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"Tip" message:@"YOU HAVE FOR TOTAL 5 MINS TO EARN YOUR POINTS; EVERY FOX = 1 POINT; IF YOU HAVE GREATER THAN 10 FOXS , HIPPO MOOD+2; GREATER THAN 20, HIPPO MOOD +3 AND SO ON, TRY TO HIT AS MUCH AS YOU CAN!!" preferredStyle:UIAlertControllerStyleAlert];

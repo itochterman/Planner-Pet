@@ -54,7 +54,7 @@
     
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
-    
+    self.canSave = true;
     
     
 }
@@ -155,8 +155,9 @@
 
 - (IBAction)pushCTB:(id)sender {
     
+    
+    
     if(_date == nil || [_taskTitle.text isEqualToString:@""]){
-        
         _warningLabel.hidden = NO;
     }
     
@@ -181,7 +182,6 @@
         [_appDelegate saveContext];
         
         //Create Notification
-        
         UNMutableNotificationContent *content = [UNMutableNotificationContent new];
         content.title = [NSString localizedUserNotificationStringForKey: @"Hippo is Sad! Why you no task!?" arguments:nil];
         content.body = [NSString localizedUserNotificationStringForKey: _taskTitle.text arguments:nil];
