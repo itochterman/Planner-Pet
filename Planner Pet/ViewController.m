@@ -161,7 +161,8 @@
     }
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    cell.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.8];
+    cell.backgroundColor = [UIColor colorWithRed:0 green:120/255.0 blue:120/255.0 alpha:0.8];
+    
     
     NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     

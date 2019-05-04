@@ -1190,7 +1190,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = HB6WCZLH75;
+				DEVELOPMENT_TEAM = 6TA982FFLF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1202,7 +1202,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-PetB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Planner Pet/HippoPlay/Game/NinjaPiggy/HippoPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1216,7 +1216,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = HB6WCZLH75;
+				DEVELOPMENT_TEAM = 6TA982FFLF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1228,7 +1228,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-Pet";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Planner-PetB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Planner Pet/HippoPlay/Game/NinjaPiggy/HippoPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
