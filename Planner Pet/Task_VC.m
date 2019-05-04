@@ -41,6 +41,7 @@
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"MMM dd h:mm a";
     _taskDate.text = [format stringFromDate: taskDate];
+    _taskDate.enabled = NO;
     
     [super viewDidLoad];
     
@@ -59,6 +60,16 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     return NO;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 /*
 #pragma mark - Navigation

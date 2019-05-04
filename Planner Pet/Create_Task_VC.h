@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSManagedObjectContext * CDContext;
 @property (weak, nonatomic) IBOutlet UITextField *addDate;
 @property AppDelegate * appDelegate;
+@property BOOL canSave; 
+
+-(void) saveDate: (UIDatePicker *) picker;
+
 
 @end
 

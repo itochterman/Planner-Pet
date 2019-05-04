@@ -64,6 +64,10 @@
     self.data.layer.cornerRadius = self.data.frame.size.height/6.66;
     self.data.clipsToBounds = YES;
     
+    self.dataView.layer.cornerRadius = self.dataView.frame.size.height/30;
+    self.dataView.clipsToBounds = YES;
+    self.dataView.backgroundColor = [UIColor colorWithRed:0 green:(120/255.0) blue:(120/255.0) alpha:0.5];
+    
 //    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
 //    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];\
     UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sand.jpg"]];
@@ -142,17 +146,28 @@
     
     //*100/arr.count
     self.dailyTotal.text = [NSString stringWithFormat:@"%d",dailyTasksCompleted];
+    self.dailyTotal.textColor = [UIColor whiteColor];
     self.dailyaverage.text = (dailyTasks.count==0) ? @"N/A" : [NSString stringWithFormat:@"%lu%%",dailyTasksCompleted*100/dailyTasks.count];
+    self.dailyaverage.textColor = [UIColor whiteColor];
     
     
     self.weeklyTotal.text = [NSString stringWithFormat:@"%d",weekTasksCompleted];
+    self.weeklyTotal.textColor = [UIColor whiteColor];
     self.weeklyaverage.text = (weekTasks.count==0) ? @"N/A" : [NSString stringWithFormat:@"%lu%%",weekTasksCompleted*100/weekTasks.count];
-    
+    self.weeklyaverage.textColor = [UIColor whiteColor];
+
     self.montlyTotal.text = [NSString stringWithFormat:@"%d",monthTasksCompleted];
+    self.montlyTotal.textColor = [UIColor whiteColor];
+
     self.montlyTotalaverage.text = (monthTasks.count==0) ? @"N/A" : [NSString stringWithFormat:@"%lu%%",monthTasksCompleted*100/monthTasks.count];
-    
+    self.montlyTotalaverage.textColor = [UIColor whiteColor];
+
     self.yearlyTotal.text = [NSString stringWithFormat:@"%d",yearTasksCompleted];
+    self.yearlyTotal.textColor = [UIColor whiteColor];
+
     self.yearlyaverage.text = (yearTasks.count==0) ? @"N/A" : [NSString stringWithFormat:@"%lu%%",yearTasksCompleted*100/yearTasks.count];
+    self.yearlyaverage.textColor = [UIColor whiteColor];
+
 
 }
 

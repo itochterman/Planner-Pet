@@ -31,6 +31,7 @@
     NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
     dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
     _addDate.text = [dateForm stringFromDate: _date];
+    _addDate.delegate = self;
     
     self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height/6.66;
     self.cancelButton.clipsToBounds = YES;
@@ -38,7 +39,9 @@
     self.createTaskButton.layer.cornerRadius = self.createTaskButton.frame.size.height/6.66;
     self.createTaskButton.clipsToBounds = YES;
     
+    self.taskDescView.layer.cornerRadius = self.taskDescView.layer.frame.size.height/12;
     _taskDescView.clipsToBounds=YES;
+    
     
     
     
@@ -57,6 +60,8 @@
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
     
+    
+    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -69,40 +74,83 @@
     
     
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == _addDate){
+        return NO;
+    }
+    else{
+        return YES;
+    }
+}
 
 - (IBAction)touchDate:(id)sender {
+//    _dateLabel.text = @"Date: ";
+    _dateLabel.textColor = [UIColor redColor];
+    _dateLabel.backgroundColor = [UIColor clearColor];
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+
+    
     
     [datePicker setDate:_date];
     [self.addDate setInputView:datePicker];
-    [datePicker addTarget:self action:@selector(saveDate:)
-         forControlEvents:UIControlEventValueChanged];
+    [datePicker addTarget: self action:@selector(datePickerChange:) forControlEvents:UIControlEventValueChanged];
+//    [datePicker addTarget:self action:@selector(saveDate:)
+//         forControlEvents:UIControlEventValueChanged];
     
     //    NSLog(@"The date is: %@", self.addDate.text);
     
 }
 
+-(void)datePickerChange:(id)sender{
+    UIDatePicker * picker = (UIDatePicker*) sender;
+    
+    NSDate * date = picker.date;
+    _date = date;
+    
+    NSComparisonResult * result = [date compare: NSDate.date];
+    
+    if(result != NSOrderedAscending){
+        _dateLabel.text = @"Date: ";
+        _dateLabel.backgroundColor = [UIColor clearColor];
+        _dateLabel.textColor = [UIColor redColor];
+        self.canSave = YES;
+        [self saveDate: picker];
+        
+
+    }
+    else{
+        _dateLabel.text = @"Error: Invalid date/time.";
+        _dateLabel.textColor = [UIColor blackColor];
+        _dateLabel.backgroundColor = [UIColor redColor];
+        
+        self.canSave = NO; 
+        
+    }
+}
+
 //
 -(void) saveDate: (UIDatePicker *) picker{
-    NSComparisonResult * result= [_date compare: NSDate.date];
-    if(result != NSOrderedAscending){
-        _date = picker.date;
+    _date = picker.date;
+
+    
+//    NSComparisonResult * result= [_date compare: NSDate.date];
+//    if(result != NSOrderedAscending){
         NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
         dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
         _addDate.text = [dateForm stringFromDate: _date];
         
         NSLog([dateForm stringFromDate: _date]);
 
-    }
+//    }
 
-    else{
-        NSLog(@"ERROR: ENTER AN UPCOMING TIME.");
-        _dateLabel.text = @"Error: Invalid date/time.";
-        _dateLabel.textColor = [UIColor blackColor];
-        _dateLabel.backgroundColor = [UIColor redColor];
-        
-        
-    }
+//    else{
+//        NSLog(@"ERROR: ENTER AN UPCOMING TIME.");
+//        _dateLabel.text = @"Error: Invalid date/time.";
+//        _dateLabel.textColor = [UIColor blackColor];
+//        _dateLabel.backgroundColor = [UIColor redColor];
+//        
+//        
+//    }
     
 }
 
@@ -130,7 +178,7 @@
     //
     //    }
     
-    else{
+    else if(self.canSave){
         NSLog(@"Title is %@ ", _taskTitle.text);
         NSLog(@"Description is %@ ", _taskDescView.text);
         
