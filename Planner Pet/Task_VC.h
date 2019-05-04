@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import  <CoreData/CoreData.h>
-
+#import "FSCalendar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Task_VC : UIViewController
 @property NSManagedObject * task;
-
+@property (weak, nonatomic) FSCalendar *calendar;
 @end
 
 NS_ASSUME_NONNULL_END

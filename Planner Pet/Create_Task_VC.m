@@ -8,6 +8,7 @@
 
 #import "Create_Task_VC.h"
 #import "HippoManager.h"
+#import "FSCalendar.h"
 @import UserNotifications;
 
 @interface Create_Task_VC ()
@@ -18,6 +19,7 @@
 @property BOOL filledOut;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 
 @end
 
@@ -50,13 +52,6 @@
     
     _warningLabel.hidden = YES;
     
-    CAGradientLayer *myFkngAwsmGrad = [[CAGradientLayer alloc] init];
-    [myFkngAwsmGrad setColors:@[(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor]]];
-    myFkngAwsmGrad.frame = self.view.bounds;
-    
-    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
-    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];
-    
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     _CDContext = _appDelegate.persistentContainer.viewContext;
     
@@ -85,8 +80,6 @@
 
 - (IBAction)touchDate:(id)sender {
 //    _dateLabel.text = @"Date: ";
-    _dateLabel.textColor = [UIColor redColor];
-    _dateLabel.backgroundColor = [UIColor clearColor];
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
 
     
@@ -111,18 +104,15 @@
     
     if(result != NSOrderedAscending){
         _dateLabel.text = @"Date: ";
-        _dateLabel.backgroundColor = [UIColor clearColor];
-        _dateLabel.textColor = [UIColor redColor];
+        _dateLabel.textColor = [UIColor colorWithRed:93/255.0 green:188/255.0 blue:210/255.0 alpha:1];
         self.canSave = YES;
         [self saveDate: picker];
         
 
     }
     else{
-        _dateLabel.text = @"Error: Invalid date/time.";
-        _dateLabel.textColor = [UIColor blackColor];
-        _dateLabel.backgroundColor = [UIColor redColor];
-        
+        _dateLabel.text = @"Task must be in the Future";
+        _dateLabel.textColor = [UIColor redColor];
         self.canSave = NO; 
         
     }
@@ -226,7 +216,7 @@
         
         //创建任务完成通知
         [self createTaskOk];
-        
+        [_calendar reloadData];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     

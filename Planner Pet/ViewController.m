@@ -56,7 +56,7 @@
     
     //Calendar Stuff
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"MMM dd h:mm a";
+    self.dateFormatter.dateFormat = @"MMM dd";
     
     NSDate * date = NSDate.date;
     
@@ -355,12 +355,14 @@
         Task_VC * segueDest = [segue destinationViewController];
         NSManagedObject * task = (NSManagedObject *) sender;
         segueDest.task = task;
+        segueDest.calendar = _calendar;
     }
     if ([segue.identifier isEqualToString:@"createNewTask"]) {
         Create_Task_VC * cTask = [segue destinationViewController];
         //Create_Task_VC * segueDest = [segue destinationViewController];
        // NSManagedObject * task = (NSManagedObject *) sender;
         cTask.date = _selectedDate;
+        cTask.calendar = _calendar;
     }
 }
 
@@ -398,7 +400,33 @@
 
 
 #pragma mark - <FSCalendarDataSource>
-//deleted
+- (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    
+    NSCalendar * cal = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
+    NSDateComponents * components = [cal components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate: date];
+    
+    NSDate * minDate = [cal dateFromComponents: components];
+    
+    [components setHour: 23];
+    [components setMinute: 59];
+    [components setSecond: 59];
+    
+    NSDate * maxDate = [cal dateFromComponents: components];
+    
+    
+    NSPredicate * taskPred = [NSPredicate predicateWithFormat: @"(dateStart >= %@) AND (dateStart <= %@)", minDate, maxDate];
+    
+    
+    [request setPredicate:taskPred];
+    
+    NSManagedObjectContext * moc = _appDelegate.persistentContainer.viewContext;
+    
+    NSArray *results = [moc executeFetchRequest:request error: nil ];
+    
+    return [results count];
+}
 
 
 #pragma mark - helper functions

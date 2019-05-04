@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "FSCalendar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *addDate;
 @property AppDelegate * appDelegate;
 @property BOOL canSave; 
+
+@property (weak, nonatomic) FSCalendar *calendar;
 
 -(void) saveDate: (UIDatePicker *) picker;
 

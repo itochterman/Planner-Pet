@@ -7,6 +7,7 @@
 //
 
 #import "Task_VC.h"
+#import "FSCalendar.h"
 
 @interface Task_VC ()
 
@@ -45,16 +46,11 @@
     
     [super viewDidLoad];
     
-    CAGradientLayer *myFkngAwsmGrad = [[CAGradientLayer alloc] init];
-    [myFkngAwsmGrad setColors:@[(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor]]];
-    myFkngAwsmGrad.frame = self.view.bounds;
-    
-    [self.view.layer insertSublayer:myFkngAwsmGrad atIndex:0];
-    self.view.layer.backgroundColor = [[UIColor clearColor] CGColor];
     // Do any additional setup after loading the view.
 }
 - (IBAction)doneButtonPress:(id)sender {
     [self.task setValue: _taskDetail.text forKey: @"describe"];
+    [_calendar reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
