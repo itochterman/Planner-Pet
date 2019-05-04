@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) YBPopupMenu *popupMenu;
 
-@property (nonatomic,assign) BOOL isShow;
+@property (nonatomic,assign) BOOL isCanShow;
 
 @end
 

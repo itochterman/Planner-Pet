@@ -42,15 +42,15 @@
 @implementation PetViewController
 
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    if (self.hippoMianView.popupMenu) {
-        [self.hippoMianView.popupMenu dismiss];
-        self.hippoMianView.popupMenu.isShow = NO;
-//        self.hippoMianView.popupMenu = nil;
-    }
-}
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//    [super viewDidDisappear:animated];
+//    if (self.hippoMianView.popupMenu) {
+//        [self.hippoMianView.popupMenu dismiss];
+//        self.hippoMianView.popupMenu.isShow = NO;
+////        self.hippoMianView.popupMenu = nil;
+//    }
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -108,7 +108,7 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.navigationController.navigationBar setTranslucent:NO];
-    
+    self.hippoMianView.isCanShow=YES;
     [self.view addSubview:self.hippoMianView];
     __weak typeof(self) weakSelf = self;
     [self.hippoMianView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +119,17 @@
         
     }];
 }
-
+-(void) viewDidDisappear:(BOOL)animated{
+    
+    [super viewDidDisappear:animated];
+    if (self.hippoMianView !=nil){
+        self.hippoMianView.isCanShow=NO;
+        self.hippoMianView=nil;
+        
+    }
+    
+    
+}
 /*
 #pragma mark - Navigation
 
@@ -372,7 +382,7 @@
         _hippoMianView = [[HippoMainView alloc]initWithEnterAction:^{
             [weakSelf configHippoPlayGame];
         }];
-        _hippoMianView.isShow = YES;
+        _hippoMianView.isCanShow = YES;
     }
     return _hippoMianView;
 }

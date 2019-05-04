@@ -404,7 +404,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf configClickHippoAnimation:[weakSelf.toiletImageAry copy] andDurationTime:4.0 andRepeatCount:1];
                 [weakSelf.popupMenu dismiss];
-                if (weakSelf.isShow) {
+                if (weakSelf.isCanShow) {
                     weakSelf.popupMenu = [YBPopupMenu showRelyOnView:self.hippoBackImageView titles:@[@"Clean, Clean, Clean!!! 💩"] icons:nil menuWidth:self.hippoBackImageView.bounds.size.width otherSettings:^(YBPopupMenu *popupMenu) {
                         popupMenu.delegate = self;
                         popupMenu.showMaskView = NO;
