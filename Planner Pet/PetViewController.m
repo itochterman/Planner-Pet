@@ -63,7 +63,7 @@
     
     self.dataView.layer.cornerRadius = self.dataView.frame.size.height/30;
     self.dataView.clipsToBounds = YES;
-    self.dataView.backgroundColor = [UIColor colorWithRed:0 green:(120/255.0) blue:(120/255.0) alpha:0.5];
+    self.dataView.backgroundColor = [UIColor colorWithRed:0 green:(206/255.0) blue:(209/255.0) alpha:0.5];
     
     [SVProgressHUD showInfoWithStatus:@"Double tap on Mr. Hippo and his buttons!"];
     [SVProgressHUD dismissWithDelay:3.0];

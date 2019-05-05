@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
 @property (weak, nonatomic) IBOutlet UITextView *taskDescView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property UITextField * activeField;
+
 
 @property BOOL filledOut;
 
@@ -28,7 +31,15 @@
 
 - (void)viewDidLoad {
     
-    NSLog(_taskDescView.text);
+    [self registerForKeyboardNotifications];
+    
+    UITapGestureRecognizer *tapScroll = [[UITapGestureRecognizer alloc]initWithTarget:self     action:@selector(tapped)];
+    tapScroll.cancelsTouchesInView = NO;
+    [_scrollView addGestureRecognizer:tapScroll];
+    
+    self.scrollView.contentSize = self.view.frame.size;
+    self.scrollView.scrollEnabled = NO;
+    
     
     NSDateFormatter * dateForm = [[NSDateFormatter alloc] init];
     dateForm.dateFormat = @"yyyy-MM-dd HH:mm";
@@ -44,9 +55,10 @@
     self.taskDescView.layer.cornerRadius = self.taskDescView.layer.frame.size.height/12;
     _taskDescView.clipsToBounds=YES;
     
-    
-    
-    
+    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    [datePicker setDate:_date];
+    [self.addDate setInputView:datePicker];
+    [datePicker addTarget: self action:@selector(datePickerChange:) forControlEvents:UIControlEventValueChanged];
     
     [super viewDidLoad];
     
@@ -59,6 +71,49 @@
     
 }
 
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    self.scrollView.scrollEnabled = YES;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
+    }
+}
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+
+    [self.scrollView setContentOffset:CGPointZero animated:YES];
+    self.scrollView.scrollEnabled = NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _activeField = nil;
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
@@ -80,13 +135,7 @@
 
 - (IBAction)touchDate:(id)sender {
 //    _dateLabel.text = @"Date: ";
-    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
-
     
-    
-    [datePicker setDate:_date];
-    [self.addDate setInputView:datePicker];
-    [datePicker addTarget: self action:@selector(datePickerChange:) forControlEvents:UIControlEventValueChanged];
 //    [datePicker addTarget:self action:@selector(saveDate:)
 //         forControlEvents:UIControlEventValueChanged];
     
@@ -144,9 +193,9 @@
     
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)tapped
 {
-    [super touchesBegan:touches withEvent:event];
+    //[super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
 }
 - (IBAction)didCancelCT:(id)sender {

@@ -161,13 +161,14 @@
     }
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    cell.backgroundColor = [UIColor colorWithRed:12/255.0 green:71/255.0 blue:79/255.0 alpha:1];
+    cell.backgroundColor = [UIColor colorWithRed: 0/255.0 green:206/255.0 blue:209/255.0 alpha:0.5];
     
     
     NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     //sets image states
     UIImage* checked = [UIImage imageNamed:@"checked.png"];
+    
     UIImage* unChecked = [UIImage imageNamed:@"unchecked.png"];
     //sets up button
     UIButton *checkbox = [UIButton buttonWithType:UIButtonTypeCustom];
