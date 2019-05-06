@@ -1,4 +1,6 @@
-/* 注：此文件中的代码为iFIERO所引用,即原创版权非iFIERO所持有. Copyright(c) Razeware LLC */
+/* 注：此文件中的代码为iFIERO所引用,即原创版权非iFIERO所持有.
+ Copyright(c) Razeware LLC */
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 
 import Foundation
 import CoreGraphics

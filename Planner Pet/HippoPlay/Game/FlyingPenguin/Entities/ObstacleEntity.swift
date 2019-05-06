@@ -2,6 +2,7 @@
 //  ObstacleEntity.swift
 //  FlyingPenguin.
 //  Copyright © 2018 iFiero. All rights reserved.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 /* 建立精灵:
  *
