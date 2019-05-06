@@ -131,7 +131,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
     //添加倒计时
     func addTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
-            if self.djsTime<=0{
+            if self.djsTime<=0 {
                 //游戏结束
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "endPlayGame"), object: nil, userInfo: ["score":self.monsterScore])
                 timer.fireDate = Date.distantFuture
@@ -433,7 +433,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
         self.monsterScore += 1
         monsterScoreLabelNode.text = "MONSTER:\(monsterScore)"
         // 切换场景 + 播放胜利的音乐
-        if monsterScore >= 30 {
+        if monsterScore >= 5 {// monsterScore wrote as 5 for DEMO REASON!!!!!!
             // 播放胜利的音乐
             let wonAction = SKAction.playSoundFileNamed("won", waitForCompletion: false)
             run(wonAction, completion: {
@@ -472,6 +472,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
     //MARK: - Ninja被Monster击中
     func ninjaCollideWithMonster(ninjaNode:SKSpriteNode,monsterNode:SKSpriteNode){
         //MARK: 进阶 monster 击中 ninja时的 ACTION Sequence
+        //减分
+//        if self.monsterScore>0{
+//            self.monsterScore -= 1;}
+//
+        
+        
+    
         // 1.变成绿色
         let turnGreeenAction  = SKAction.colorize(with: SKColor.green, colorBlendFactor: 1.0, duration: 0.2)
         // texture恢复ninja的色彩 colorBlendFactor 默认是0.0 也就是纹理不做改变直接呈现
@@ -491,6 +498,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
             blinkAction,
             removeGreenAction,
             SKAction.run({ [weak self] in
+                if self!.monsterScore>0{
+                    
+                    self?.monsterScore-=1;
+                }
                 /*
                 // 等待ACTION结束后 开始计分;
                 // monster score 加分
