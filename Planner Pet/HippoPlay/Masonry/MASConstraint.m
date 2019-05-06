@@ -3,6 +3,7 @@
 //  Masonry
 //
 //  Created by Nick Tymchenko on 1/20/14.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import "MASConstraint.h"

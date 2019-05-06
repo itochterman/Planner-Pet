@@ -13,7 +13,7 @@
 //#import "HippoModel+CoreDataProperties.h"
 //#import "HippoManager.h"
 
-@interface HippoViewController () <GameViewControllerDelegate>
+@interface HippoViewController () <GameViewControllerDelegate,GameFlyViewControllerDelegate>
 @property (nonatomic,strong)HippoMainView *hippoMianView;
 //@property (nonatomic,strong)HippoBodyStatusView *hippoBodyView;
 //@property (nonatomic, strong) GCDTimer  *gcdTimer;
@@ -83,6 +83,7 @@
     }];
 }
 - (void)configHippoPlayGame {
+    
     GameViewController *gameVC = [[GameViewController alloc]init];
     gameVC.delegate = self;
     [self presentViewController:gameVC animated:YES completion:nil];
@@ -93,6 +94,10 @@
 - (void)playGameSuccess {
     [self.hippoMianView configWithChangeMood:0.1];
 }
+- (void)playFlyGameSuccess {
+    [self.hippoMianView configWithChangeMood:0.1];
+}
+
 #pragma mark - get
 - (HippoMainView *)hippoMianView {
     if (!_hippoMianView) {

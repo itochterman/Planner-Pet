@@ -3,7 +3,7 @@
 //  Masonry
 //
 //  Created by Jonas Budelmann on 19/08/13.
-//  Copyright (c) 2013 Jonas Budelmann. All rights reserved.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

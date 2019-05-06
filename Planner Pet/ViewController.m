@@ -3,7 +3,7 @@
 //  Planner Pet
 //
 //  Created by Will Powers on 4/9/19.
-//  Copyright © 2019 Will Powers. All rights reserved.
+//  Copyright © 2019 Wenyin Zheng, Will Powers. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -70,6 +70,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endPlayGameNot:) name:@"endPlayGame" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFlyPlayGameNot:) name:@"flyGameEndPlayGame" object:nil];
+    
     // [self.calendar selectDate:[self.dateFormatter dateFromString:@"2016/02/03"]];
     
     /*
@@ -98,6 +100,20 @@
             
         }];
     }
+}
+
+- (void)endFlyPlayGameNot:(NSNotification *)not
+{
+    int point = [[not.userInfo objectForKey:@"point"] intValue];
+    int score = [[not.userInfo objectForKey:@"score"] intValue];
+    [[HippoManager shareInstance] configDataWithAddFood:point*HippoUnit moodSuccess:^(float mood, float food, float exp, float clean) {
+        
+    }];
+    
+//    UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"Tip" message:[NSString stringWithFormat:@"Score:%d",score] preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *action = [UIAlertAction actionWithTitle:@"I know" style:UIAlertActionStyleCancel handler:nil];
+//    [alertCtr addAction:action];
+//    [self presentViewController:alertCtr animated:YES completion:nil];
 }
 
 - (void)dealloc
@@ -168,7 +184,6 @@
     
     //sets image states
     UIImage* checked = [UIImage imageNamed:@"checked.png"];
-    
     UIImage* unChecked = [UIImage imageNamed:@"unchecked.png"];
     //sets up button
     UIButton *checkbox = [UIButton buttonWithType:UIButtonTypeCustom];

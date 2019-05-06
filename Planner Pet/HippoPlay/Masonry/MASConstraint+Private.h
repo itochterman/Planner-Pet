@@ -3,7 +3,7 @@
 //  Masonry
 //
 //  Created by Nick Tymchenko on 29/04/14.
-//  Copyright (c) 2014 cloudling. All rights reserved.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import "MASConstraint.h"

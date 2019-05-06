@@ -3,7 +3,7 @@
 //  Masonry
 //
 //  Created by Craig Siemens on 2015-06-23.
-//
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import "MASUtilities.h"

@@ -2,8 +2,8 @@
 //  HippoPrefixHeader.pch
 //  HippoPlay
 //
-//  Created by xlkd 24 on 2019/4/12.
-//  Copyright © 2019 xlkd 24. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #ifndef HippoPrefixHeader_pch
@@ -33,13 +33,16 @@
 
 #define HippoMoodTime 30
 
-#define HippoShitTime 10
-
 #define HippoShitNumer 3
 
 #define HippoDownTime 60
 
 #define HippoRedLine 0.4
+
+#define HippoShitTime 60 * 10 //拉屎时间间隔  单位s
+
+
+#define HippoUnit 0.02 //各个进度条都是以1为单位，这里设置为0.02，也就是1/0.02 = 50点
 
    
 

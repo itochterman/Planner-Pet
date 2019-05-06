@@ -33,11 +33,11 @@
         [self summer_setupViews];
         [self summer_bindViewModel];
         if (titleName==@"food"){
-            _enterImageView.backgroundColor = [UIColor whiteColor];
-            _enterImageView.layer.cornerRadius = 10;
-            _enterImageView.clipsToBounds = YES;
-            _enterImageView.layer.borderColor = [UIColor blueColor].CGColor;
-            _enterImageView.layer.borderWidth = 3.0f;
+            _enterImageView.backgroundColor = [UIColor clearColor];
+//            _enterImageView.layer.cornerRadius = 10;
+//            _enterImageView.clipsToBounds = YES;
+//            _enterImageView.layer.borderColor = [UIColor blueColor].CGColor;
+//            _enterImageView.layer.borderWidth = 3.0f;
             
         }
         
@@ -143,9 +143,10 @@
     line.backgroundColor = [UIColor redColor];
     [self.progressBackView addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(weakSelf.progressBackView.mas_centerY);
         make.width.equalTo(weakSelf.mas_width);
         make.height.mas_equalTo(2);
+        make.bottom.equalTo(weakSelf.progressBackView.mas_bottom).multipliedBy(0.8);
+        
     }];
     
 }
@@ -218,6 +219,7 @@
 - (UIImageView *)enterImageView {
     if (!_enterImageView) {
         _enterImageView = [[UIImageView alloc]init];
+        _enterImageView.backgroundColor = [UIColor clearColor];
     }
     return _enterImageView;
 }

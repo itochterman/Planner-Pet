@@ -62,6 +62,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)startPlayGame;
 
 - (void)takeShowerSuccess:(void (^)(float mood,float food,float exp,float clean))clearShitSuccess;
+
+- (void)configDataWithExp:(CGFloat)exp Success:(void (^)(float mood,float food,float exp,float clean)) Success;
+
+- (void)configDataWithAddFood:(CGFloat)food andClean:(CGFloat)clean moodSuccess:(void (^)(float mood,float food,float exp,float clean))moodSuccess;
+
+- (void)configDataWithAddFood:(CGFloat)food moodSuccess:(void (^)(float mood,float food,float exp,float clean))moodSuccess;
+
+- (void)playGameSuccess:(void (^)(float mood,float food,float exp,float clean))moodSuccess;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,7 +13,7 @@
 #import "Planner_Pet-Swift.h"
 #import "HippoManager.h"
 
-@interface PetViewController ()<GameViewControllerDelegate>
+@interface PetViewController ()<GameViewControllerDelegate,GameFlyViewControllerDelegate>
 
 @property (nonatomic,strong)HippoMainView *hippoMianView;
 
@@ -40,17 +40,6 @@
 @end
 
 @implementation PetViewController
-
-
-//- (void)viewDidDisappear:(BOOL)animated
-//{
-//    [super viewDidDisappear:animated];
-//    if (self.hippoMianView.popupMenu) {
-//        [self.hippoMianView.popupMenu dismiss];
-//        self.hippoMianView.popupMenu.isShow = NO;
-////        self.hippoMianView.popupMenu = nil;
-//    }
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -119,7 +108,7 @@
         
     }];
 }
--(void) viewDidDisappear:(BOOL)animated{
+-(void)viewDidDisappear:(BOOL)animated{
     
     [super viewDidDisappear:animated];
     if (self.hippoMianView !=nil){
@@ -354,11 +343,31 @@
 
 - (void)configHippoPlayGame {
     HippoModel *model = [[HippoManager shareInstance] configDataWithModel];
-    if (model.exp < 0.5 || model.clean <= 0) {
+    if (model.exp < HippoUnit*10 || model.clean <= 0) {
         [SVProgressHUD showErrorWithStatus:@"I’m too HUNGRY to play games with u now. \n\n Do some tasks and feed me cheeseburgers!"];
         [SVProgressHUD dismissWithDelay:3.0];
         return;
     }
+    UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"game" message:@"chooseGame" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *suerAction = [UIAlertAction actionWithTitle:@"game1" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self game1];
+    }];
+    UIAlertAction *suerAction2 = [UIAlertAction actionWithTitle:@"game2" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self game2];
+    }];
+    [alertCtr addAction:suerAction];
+    [alertCtr addAction:suerAction2];
+    [self presentViewController:alertCtr animated:YES completion:nil];
+    
+    
+    
+    
+    
+}
+- (void)game1 {
+    
+//    configDataWithExpSuccess
+    
     UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"Tip" message:@"YOU HAVE FOR TOTAL 5 MINS TO EARN YOUR POINTS; EVERY FOX = 1 POINT; IF YOU HAVE GREATER THAN 10 FOXS , HIPPO MOOD+2; GREATER THAN 20, HIPPO MOOD +3 AND SO ON, TRY TO HIT AS MUCH AS YOU CAN!!" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *suerAction = [UIAlertAction actionWithTitle:@"I know" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         GameViewController *gameVC = [[GameViewController alloc]init];
@@ -367,13 +376,38 @@
     }];
     [alertCtr addAction:suerAction];
     [self presentViewController:alertCtr animated:YES completion:nil];
-    
 }
-
+- (void)game2 {
+    
+    HippoModel *model = [[HippoManager shareInstance] configDataWithModel];
+    if (model.exp < HippoUnit*10) {
+        [SVProgressHUD showErrorWithStatus:@"I'm too tired to play games!"];
+        [SVProgressHUD dismissWithDelay:3.0];
+        return;
+    }
+    
+    UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"Tip" message:@"You have UNLIMTED time for this game！Try to collect as much GOLD mental as you can... FIVE gold= ONE food pt" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *suerAction = [UIAlertAction actionWithTitle:@"I know" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [self.hippoMianView configWithChangeExp:HippoUnit*10];
+        [[HippoManager shareInstance] playGameSuccess:^(float mood, float food, float exp, float clean) {
+            
+        }];
+        GameFlyViewController *gameVC = [[GameFlyViewController alloc]init];
+        gameVC.delegate = self;
+        [self presentViewController:gameVC animated:YES completion:nil];
+    }];
+    [alertCtr addAction:suerAction];
+    [self presentViewController:alertCtr animated:YES completion:nil];
+}
 
 #pragma mark - GameViewControllerDelegate
 - (void)playGameSuccess {
-    [self.hippoMianView configWithChangeMood:0.1];
+    [[HippoManager shareInstance] playGameSuccess:^(float mood, float food, float exp, float clean) {
+        
+    }];
+}
+- (void)playFlyGameSuccess {
+    
 }
 #pragma mark - get
 - (HippoMainView *)hippoMianView {

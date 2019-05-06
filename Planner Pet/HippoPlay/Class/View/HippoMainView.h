@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)configWithChangeMood:(float)mood;
-
+- (void)configWithChangeFood:(float)mood andClean:(float)clean;
+- (void)configWithChangeExp:(float)exp;
 @property (nonatomic, strong) YBPopupMenu *popupMenu;
 
 @property (nonatomic,assign) BOOL isCanShow;

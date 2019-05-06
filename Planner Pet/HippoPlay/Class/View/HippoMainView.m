@@ -347,6 +347,28 @@
     }];
     [self configDataNormalWithUI];
 }
+
+- (void)configWithChangeFood:(float)mood andClean:(float)clean {
+    __weak __typeof(self) weakSelf = self;
+    [[HippoManager shareInstance] configDataWithAddFood:mood andClean:clean moodSuccess:^(float mood, float food, float exp, float clean) {
+        if ([weakSelf.subviews containsObject:weakSelf.hippoBodyView]) {
+            
+            [weakSelf.hippoBodyView configChangeUIWithData:mood andExpNumber:exp andFoodNumber:food andCleanNumber:clean];
+        }
+    }];
+    [self configDataNormalWithUI];
+}
+- (void)configWithChangeExp:(float)exp {
+    __weak __typeof(self) weakSelf = self;
+    [[HippoManager shareInstance] configDataWithExp:exp Success:^(float mood, float food, float exp, float clean) {
+        if ([weakSelf.subviews containsObject:weakSelf.hippoBodyView]) {
+            
+            [weakSelf.hippoBodyView configChangeUIWithData:mood andExpNumber:exp andFoodNumber:food andCleanNumber:clean];
+        }
+    }];
+    [self configDataNormalWithUI];
+}
+
 - (void)configDataWithUI:(SummerOrderStatus)type {
     self.type = type;
     switch (self.type) {
@@ -518,7 +540,7 @@
                     [SVProgressHUD dismissWithDelay:1.0];
                     [weakSelf configClickHippoAnimation:[weakSelf.shakeYourHeadImageAry copy] andDurationTime:3.0 andRepeatCount:1.0];
                 }else{
-                    if (weakSelf.exp < 0.1) {
+                    if (weakSelf.exp < HippoUnit*1) {
                         [SVProgressHUD showErrorWithStatus:@"exp not enough"];
                         [SVProgressHUD dismissWithDelay:1.0];
                     }else{
@@ -543,12 +565,12 @@
             if (isSelect) {
                 isSelect = NO;
                 __weak __typeof(self) weakSelf = self;
-                if (weakSelf.clean >= 0.95) {
+                if (weakSelf.clean >= 0.98) {
                     [SVProgressHUD showInfoWithStatus:@"I am a CLEAN little cute hippo, NO extra showering, so we save water!!!"];
                     [SVProgressHUD dismissWithDelay:1.0];
-                    [weakSelf configClickHippoAnimation:[weakSelf.showerImageAry copy] andDurationTime:6.0 andRepeatCount:1.0];
+//                    [weakSelf configClickHippoAnimation:[weakSelf.showerImageAry copy] andDurationTime:6.0 andRepeatCount:1.0];
                 }else{
-                    if (weakSelf.exp < 0.1) {
+                    if (weakSelf.exp < HippoUnit*1) {
                         [SVProgressHUD showErrorWithStatus:@"exp not enough"];
                         [SVProgressHUD dismissWithDelay:1.0];
                     }else{
@@ -580,12 +602,12 @@
             if (isSelect) {
                 isSelect = NO;
                 __weak __typeof(self) weakSelf = self;
-                if (weakSelf.exp >= 0.95) {
+                if (weakSelf.exp >= 0.98) {
                     [SVProgressHUD showInfoWithStatus:@"exp is enough"];
                     [SVProgressHUD dismissWithDelay:1.0];
                     [weakSelf configClickHippoAnimation:[weakSelf.shakeYourHeadImageAry copy] andDurationTime:3.0 andRepeatCount:1.0];
                 }else{
-                    if (weakSelf.food < 0.3) {
+                    if (weakSelf.food < HippoUnit * 3) {
                         [SVProgressHUD showInfoWithStatus:@"food not enough"];
                         [SVProgressHUD dismissWithDelay:1.0];
                     }else{

@@ -3,7 +3,7 @@
 //  YBPopupMenu
 //
 //  Created by lyb on 2017/5/10.
-//  Copyright © 2017年 lyb. All rights reserved.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
