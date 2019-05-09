@@ -1,20 +1,20 @@
 //
-//  AnimationComponent.swift
-//  FlyingPenguin
+//  WYAnimationComponent.swif
+//  Planner Pet
 //
-//  Created by Chen on 2018/7/28.
-//  Copyright © 2018 iFiero. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import GameplayKit
 import SpriteKit
 
-class AnimationComponent:GKComponent {
+class WYAnimationComponent:GKComponent {
     let textures:[SKTexture]
-    let spriteComponent: SpriteComponent
+    let spriteComponent: WYSpriteComponent
     
     init(entity:GKEntity,textures:[SKTexture]) {
-        self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
+        self.spriteComponent = entity.component(ofType: WYSpriteComponent.self)!
         self.textures = textures
         super.init()
     }

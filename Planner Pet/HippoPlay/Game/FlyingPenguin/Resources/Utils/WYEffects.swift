@@ -1,16 +1,14 @@
-/* 注：此文件中的代码为iFIERO所引用,即原创版权非iFIERO所持有.
- Copyright(c) Razeware LLC */
+//
+//  WYEffects.swif
+//  Planner Pet
+//
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
+//
 
 import SpriteKit
 
-/**
- * Allows you to perform actions with custom timing functions.
- *
- * Unfortunately, SKAction does not have a concept of a timing function, so
- * we need to replicate the actions using SKTEffect subclasses.
- */
-open class SKTEffect {
+open class WYEffects {
   unowned var node: SKNode
   var duration: TimeInterval
   open var timingFunction: ((CGFloat) -> CGFloat)?
@@ -18,7 +16,7 @@ open class SKTEffect {
   public init(node: SKNode, duration: TimeInterval) {
     self.node = node
     self.duration = duration
-    timingFunction = SKTTimingFunctionLinear
+    timingFunction = WYTimingFunctionLinear
   }
 
   open func update(_ t: CGFloat) {
@@ -29,7 +27,7 @@ open class SKTEffect {
 /**
  * Moves a node from its current position to a new position.
  */
-open class SKTMoveEffect: SKTEffect {
+open class WYMoveEffect: WYEffects {
   var startPosition: CGPoint
   var delta: CGPoint
   var previousPosition: CGPoint
@@ -54,7 +52,7 @@ open class SKTMoveEffect: SKTEffect {
 /**
  * Scales a node to a certain scale factor.
  */
-open class SKTScaleEffect: SKTEffect {
+open class WYScaleEffect: WYEffects {
   var startScale: CGPoint
   var delta: CGPoint
   var previousScale: CGPoint
@@ -78,7 +76,7 @@ open class SKTScaleEffect: SKTEffect {
 /**
  * Rotates a node to a certain angle.
  */
-open class SKTRotateEffect: SKTEffect {
+open class WYRotateEffect: WYEffects {
   var startAngle: CGFloat
   var delta: CGFloat
   var previousAngle: CGFloat
@@ -102,7 +100,7 @@ open class SKTRotateEffect: SKTEffect {
  * Wrapper that allows you to use SKTEffect objects as regular SKActions.
  */
 public extension SKAction {
-  public class func actionWithEffect(_ effect: SKTEffect) -> SKAction {
+  public class func actionWithEffect(_ effect: WYEffects) -> SKAction {
     return SKAction.customAction(withDuration: effect.duration) { node, elapsedTime in
       var t = elapsedTime / CGFloat(effect.duration)
 

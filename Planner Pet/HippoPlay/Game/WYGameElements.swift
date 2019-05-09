@@ -1,18 +1,10 @@
 //
-//  GameElements.swift
-//  FlyingPenguin
+//  WYGameElements.swif
+//  Planner Pet
 //
-//  Copyright © 2018 iFiero.
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
-/* 建立精灵:
- *
- * 方法一：Entity+Component
- * 方法二：新建class 方便代码二次复用; CoinSprite
- * 方法三：extension GameScene  func createCoinSprite() -> SKSpriteNode {//code};
- *
- * (此处为方法三)
- */
 
 
 import SpriteKit
@@ -22,9 +14,9 @@ extension GameFlyScene{
     // 障碍物
     func createObstacle() -> SKSpriteNode{
         //Entity
-        let obstacle = ObstacleEntity(imageName: "wall")
+        let obstacle = WYObstacleEntity(imageName: "wall")
         //Component
-        let obstacleNode  = obstacle.spriteComponent.node
+        let obstacleNode  = obstacle.spriteCom.node
         obstacleNode.name = "obstacle"
         obstacleNode.zPosition = 2 // 位于树的下层
         obstacleNode.anchorPoint = CGPoint(x: 0.5, y: 0)  // x轴为正中心，旋转后才会位于正顶端;
@@ -38,9 +30,9 @@ extension GameFlyScene{
         print("obstacle's center CGPoint:\(height)")
         obstacleNode.physicsBody?.affectedByGravity  = false
         obstacleNode.physicsBody?.isDynamic = false 
-        obstacleNode.physicsBody?.categoryBitMask    = PhysicsFlyCategory.Obstacle
-        obstacleNode.physicsBody?.contactTestBitMask = PhysicsFlyCategory.Player
-        obstacleNode.physicsBody?.collisionBitMask   = PhysicsFlyCategory.None
+        obstacleNode.physicsBody?.categoryBitMask    = WyPhysicsFlyCategory.Obstacle
+        obstacleNode.physicsBody?.contactTestBitMask = WyPhysicsFlyCategory.Player
+        obstacleNode.physicsBody?.collisionBitMask   = WyPhysicsFlyCategory.None
         obstacleNode.physicsBody?.usesPreciseCollisionDetection = true
         
         return obstacleNode
@@ -51,9 +43,9 @@ extension GameFlyScene{
         crownNode.zPosition = 8
         crownNode.zRotation = -CGFloat(10).degreesToRadians() // 角度  Mi /2
         crownNode.physicsBody = SKPhysicsBody(texture: crownNode.texture!, size: crownNode.size) //SKPhysicsBody(circleOfRadius: crownNode.size.width / 2)
-        crownNode.physicsBody?.categoryBitMask   = PhysicsFlyCategory.Crown
-        crownNode.physicsBody?.contactTestBitMask = PhysicsFlyCategory.Ground
-        crownNode.physicsBody?.collisionBitMask  = PhysicsFlyCategory.Ground
+        crownNode.physicsBody?.categoryBitMask   = WyPhysicsFlyCategory.Crown
+        crownNode.physicsBody?.contactTestBitMask = WyPhysicsFlyCategory.Ground
+        crownNode.physicsBody?.collisionBitMask  = WyPhysicsFlyCategory.Ground
         crownNode.physicsBody?.affectedByGravity = true
         crownNode.physicsBody?.isDynamic = false
          // 注意 皇冠此处要用 false ，因为皇冠是circle的物理体，会有细微的滚动，会一直update执行GameOverState

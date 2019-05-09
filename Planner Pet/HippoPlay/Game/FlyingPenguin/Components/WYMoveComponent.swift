@@ -1,22 +1,22 @@
 //
-//  MoveComponent.swift
-//  FlyingPenguin
+//  WYMoveComponent.swif
+//  Planner Pet
 //
-//  Created by Andrew Chen
-//  Copyright © 2018 iFiero. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import Foundation
 import GameplayKit
 import SpriteKit
 
-class MoveComponent:GKComponent {
+class WYMoveComponent:GKComponent {
     
     /// The node on which animations should be run for this animation component.
-    let spriteComponent: SpriteComponent  // 引入SpriteComponent 就不用每次都新建在SpriteComponent的属性了
+    let spriteComponent: WYSpriteComponent  // 引入SpriteComponent 就不用每次都新建在SpriteComponent的属性了
     
     init(entity:GKEntity) {
-        self.spriteComponent = entity.component(ofType: SpriteComponent.self)!
+        self.spriteComponent = entity.component(ofType: WYSpriteComponent.self)!
         super.init()
     }
     

@@ -1,34 +1,15 @@
-
+//
+//  CGPoint+Extensions.swif
+//  Planner Pet
+//
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
+//
 
 import CoreGraphics
 import SpriteKit
 
 public extension CGPoint {
-    
-    
-//    public static func + (left: CGPoint, right: CGPoint) -> CGPoint {
-//        return CGPoint(x: left.x + right.x, y: left.y + right.y)
-//    }
-//
-//    public static func - (left: CGPoint, right: CGPoint) -> CGPoint {
-//        return CGPoint(x: left.x - right.x, y: left.y - right.y)
-//    }
-//
-//    public static func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
-//        return CGPoint(x: point.x * scalar, y: point.y * scalar)
-//    }
-//
-//    public static func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
-//        return CGPoint(x: point.x / scalar, y: point.y / scalar)
-//    }
-//
-//    public func length() -> CGFloat {
-//        return sqrt(x*x + y*y)
-//    }
-//
-//    func normalized() -> CGPoint {
-//        return self / length()
-//    }
     
   /**
    * Creates a new CGPoint given a CGVector.

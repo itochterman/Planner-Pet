@@ -1,15 +1,15 @@
 //
-//  GameOver.swift
-//  FlyingPenguin
+//  WYGameOverState.swif
+//  Planner Pet
 //
-//  Copyright © 2018 iFiero. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class GameOverState:GKState {
+class WYGameOverState:GKState {
     unowned let scene:GameFlyScene
     // 撞击的声音
     let hitGroundSoundAction = SKAction.playSoundFileNamed("hitGround.wav", waitForCompletion: false)
@@ -46,7 +46,7 @@ class GameOverState:GKState {
     }
     // 返回等待播放的State
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == WaitingForTapState.self  // return stateClass is WaitingForTap.Type
+        return stateClass == WYWaitingForTapState.self  // return stateClass is WaitingForTap.Type
     }
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -97,9 +97,9 @@ class GameOverState:GKState {
         crownNode.position = CGPoint(x: playerLose.position.x + 80, y: playerLose.position.y + playerLose.size.height / 2 + 25)
         scene.addChild(crownNode)
         
-        crownNode.physicsBody?.categoryBitMask = PhysicsFlyCategory.Crown
-        crownNode.physicsBody?.contactTestBitMask = PhysicsFlyCategory.Ground
-        crownNode.physicsBody?.collisionBitMask = PhysicsFlyCategory.None
+        crownNode.physicsBody?.categoryBitMask = WyPhysicsFlyCategory.Crown
+        crownNode.physicsBody?.contactTestBitMask = WyPhysicsFlyCategory.Ground
+        crownNode.physicsBody?.collisionBitMask = WyPhysicsFlyCategory.None
         
         crownNode.physicsBody?.affectedByGravity = true
         crownNode.physicsBody?.isDynamic = true
@@ -123,7 +123,7 @@ class GameOverState:GKState {
             crownNode.run(crownHitGroundSoundAction)
             crownNode.physicsBody?.affectedByGravity = false
             crownNode.physicsBody?.isDynamic = false
-            crownNode.physicsBody?.categoryBitMask = PhysicsFlyCategory.None
+            crownNode.physicsBody?.categoryBitMask = WyPhysicsFlyCategory.None
             crownNode.position.y = groundHeight
            
         }

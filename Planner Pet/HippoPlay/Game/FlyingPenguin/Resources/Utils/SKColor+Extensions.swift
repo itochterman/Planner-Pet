@@ -1,8 +1,10 @@
-/* 注：此文件中的代码为iFIERO所引用,即原创版权非iFIERO所持有.
- Copyright(c) Razeware LLC */
+//
+//  SKColor+Extensions.swif
+//  Planner Pet
+//
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
-
-
+//
 import SpriteKit
 
 public func SKColorWithRGB(_ r: Int, g: Int, b: Int) -> SKColor {

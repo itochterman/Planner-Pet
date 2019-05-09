@@ -1,6 +1,9 @@
 //
-//  GameStart.swift
-//  NinjaPiggy
+//  GameStart.swif
+//  Planner Pet
+//
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import SpriteKit
@@ -66,10 +69,7 @@ class GameStart:SKScene {
             }
             // 点击返回按钮  -- 返回河马日历
             if (learningNode?.contains(touchLocation))!{
-
-//                UIApplication.shared.open(URL(string: "http://www.iFIERO.com")!, options: [:], completionHandler: { (error) in
-//                     print("jump to http://www.iFiero.com")
-//                })
+                
                 let notificationNormalName = Notification.Name(rawValue: "gobackNormalVC")
                 NotificationCenter.default.post(name: notificationNormalName, object: self,
                                                 userInfo: nil)

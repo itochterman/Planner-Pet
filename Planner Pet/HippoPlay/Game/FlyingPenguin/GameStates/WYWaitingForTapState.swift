@@ -1,15 +1,15 @@
 //
-//  WaitingForTap.swift
-//  FlyingPenguin
+//  WYWaitingForTapState.swif
+//  Planner Pet
 //
-//  Copyright © 2018 iFiero. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class WaitingForTapState:GKState {
+class WYWaitingForTapState:GKState {
     
     // unowned 防止循环引用
     unowned let scene:GameFlyScene
@@ -31,7 +31,7 @@ class WaitingForTapState:GKState {
         
     }
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is PlayingState.Type
+        return stateClass is WYPlayingState.Type
     }
     
     func initPlayButton(){

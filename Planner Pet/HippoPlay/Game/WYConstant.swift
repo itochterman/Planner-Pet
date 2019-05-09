@@ -1,8 +1,8 @@
 //
-//  Constant.swift
-//  FlyingPenguin
+//  WYConstant.swif
+//  Planner Pet
 //
-//  Copyright © 2018 iFiero. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 import UIKit
@@ -10,7 +10,7 @@ import SpriteKit
 import CoreGraphics
 
 // 物理标识;
-struct PhysicsFlyCategory {
+struct WyPhysicsFlyCategory {
     
     static let None: UInt32      = 0x1 << 1
     static let Player: UInt32    = 0x1 << 2

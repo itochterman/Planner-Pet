@@ -1,15 +1,16 @@
 //
-//  SpriteComponent.swift
-//  FlyingPenguin
+//  WYSpriteComponent.swif
+//  Planner Pet
 //
-//  Copyright © 2018 iFiero. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
 // node可被重复使用;
-class SpriteComponent :GKComponent {
+class WYSpriteComponent :GKComponent {
     let node:SKSpriteNode
     init(entity:GKEntity,texture:SKTexture,size:CGSize) {
         node = SKSpriteNode(texture: texture, color: SKColor.clear, size: size)

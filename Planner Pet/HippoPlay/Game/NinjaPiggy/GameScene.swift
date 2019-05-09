@@ -1,8 +1,8 @@
 //
-//  GameViewController.swift
-//  HippoPlay
+//  GameScene.swif
+//  Planner Pet
 //
-//  Created by Wenyin Zheng on 2019/4/23.
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
@@ -157,16 +157,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
         })
         //开始计时器
         timer.fire()
-        
-        
-//        timeLabelNode.text = "倒计时";
-//        timeLabelNode.fontColor = SKColor.black;
-//        ninjaLiveLabelNode.fontSize = 40
-//        ninjaLiveLabelNode.setScale(1.0)
-//        ninjaLiveLabelNode.zPosition = 1
-//        ninjaLiveLabelNode.position = CGPoint(x: self.frame.width - 200, y: self.frame.height - (self.frame.height / 5) - 40)
-//        ninjaLiveLabelNode.name = "timeLabelNode"
-//        self.addChild(timeLabelNode)
     }
     
     // MARK: - 分数
@@ -360,13 +350,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate{
         emitterNode.targetNode = trailNode
         // 4.飞镖Node加上子节点 emitter
         projectileNode.addChild(emitterNode)
-        /*
-         SKEmitter 此方法只有一个粒子，无拖影效果
-         图层关系：projectNode -> emitterNode
-         let emitterNode = SKEmitterNode(fileNamed: "ProjectileTrail")!
-         emitterNode.zPosition = Layer.projectile.rawValue - 1 // 位于projectile下层
-         projectileNode.addChild(emitterNode)
-         */
         
         let actionRotate  = SKAction.rotate(byAngle: CGFloat(-Double.pi/2), duration: 0.2)
         let actionRotateForever = SKAction.repeatForever(actionRotate)

@@ -1,5 +1,8 @@
-
-//  Copyright © 2018 iFiero.
+//
+//  GameFlyScene.swif
+//  Planner Pet
+//
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
@@ -19,10 +22,10 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
     
     //MARK: - StateMachine 场景中各个舞台State
     lazy var stateMachine:GKStateMachine = GKStateMachine(states: [
-        WaitingForTapState(scene: self),
-        PlayingState(scene: self),
-        FallingState(scene:self),
-        GameOverState(scene: self)])
+        WYWaitingForTapState(scene: self),
+        WYPlayingState(scene: self),
+        WYFallingState(scene:self),
+        WYGameOverState(scene: self)])
     
     let appStoreLink = "" //游戏上线后换成app store上的游戏下载地址;
     var score = 0           // 游戏分数
@@ -97,7 +100,7 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
         setupPlayer()     /// 加入玩家企鹅
         startWobble()     /// 上下浮动 + 拍打翅膀
         setupEntityComponent() // 新增测试Entity及组件component的用法 因此会多了一只penguin
-        stateMachine.enter(WaitingForTapState.self) /// 进入场景后 直接进入WaitingForTap State
+        stateMachine.enter(WYWaitingForTapState.self) /// 进入场景后 直接进入WaitingForTap State
         
         // NINJA
         ninjaLiveLabelNode.text = "Score:\(self.score)"
@@ -121,15 +124,6 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
             }
         })
         self.timer.fireDate = NSDate.distantFuture
-        
-        //        timeLabelNode.text = "倒计时";
-        //        timeLabelNode.fontColor = SKColor.black;
-        //        ninjaLiveLabelNode.fontSize = 40
-        //        ninjaLiveLabelNode.setScale(1.0)
-        //        ninjaLiveLabelNode.zPosition = 1
-        //        ninjaLiveLabelNode.position = CGPoint(x: self.frame.width - 200, y: self.frame.height - (self.frame.height / 5) - 40)
-        //        ninjaLiveLabelNode.name = "timeLabelNode"
-        //        self.addChild(timeLabelNode)
     }
     
     func transToHourMinSec(time: Int) -> String
@@ -160,9 +154,9 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
             groundNode.physicsBody = SKPhysicsBody(edgeFrom: topLeft, to: topRight)
             groundNode.physicsBody?.affectedByGravity  = true   /// 不受重力影响
             groundNode.physicsBody?.isDynamic = false
-            groundNode.physicsBody?.categoryBitMask    = PhysicsFlyCategory.Ground
-            groundNode.physicsBody?.contactTestBitMask = PhysicsFlyCategory.Player | PhysicsFlyCategory.Crown
-            groundNode.physicsBody?.collisionBitMask   = PhysicsFlyCategory.Crown
+            groundNode.physicsBody?.categoryBitMask    = WyPhysicsFlyCategory.Ground
+            groundNode.physicsBody?.contactTestBitMask = WyPhysicsFlyCategory.Player | WyPhysicsFlyCategory.Crown
+            groundNode.physicsBody?.collisionBitMask   = WyPhysicsFlyCategory.Crown
         }
         
         // playableStart  = groundNode.size.height      // 从地板高度height的开始点;
@@ -261,15 +255,15 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
         }
     }
     func setupEntityComponent(){
-        let penguin = PenguinEntity(imageName: "penguin01") // 企鹅属于worldNode的子层级;
-        let penguinNode = penguin.spriteComponent.node
+        let penguin = WYPenguinEntity(imageName: "penguin01") // 企鹅属于worldNode的子层级;
+        let penguinNode = penguin.spriteCom.node
         penguinNode.position = CGPoint(x: 320, y: 500)
         penguinNode.zPosition = 5
         worldNode.addChild(penguinNode)
        // penguin有移动的功能
-        penguin.moveComponent.startWobble();
+        penguin.moveCom.startWobble();
         
-        penguin.animationComponent.startAnimation()
+        penguin.animationCom.startAnimation()
     }
     //MARK:- 加入玩家Penguin
     func setupPlayer(){
@@ -294,8 +288,8 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
         // 监测碰撞
         //  print("playerNode.size:\(playerNode.size),向右移动:\(playerNode.size.width/2/2),碰撞width:\(width)")
         playerNode.physicsBody?.affectedByGravity  = false 
-        playerNode.physicsBody?.categoryBitMask    = PhysicsFlyCategory.Player  // 1.标识
-        playerNode.physicsBody?.contactTestBitMask = PhysicsFlyCategory.Ground | PhysicsFlyCategory.Obstacle  // 2.会和谁相撞发出通知
+        playerNode.physicsBody?.categoryBitMask    = WyPhysicsFlyCategory.Player  // 1.标识
+        playerNode.physicsBody?.contactTestBitMask = WyPhysicsFlyCategory.Ground | WyPhysicsFlyCategory.Obstacle  // 2.会和谁相撞发出通知
         playerNode.physicsBody?.collisionBitMask   = PhysicsCategory.None     // 3.会相撞(相互作用)吗
         playerNode.physicsBody?.usesPreciseCollisionDetection = true
     }
@@ -308,7 +302,7 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
     @objc func spawnSingleCoin(){
         if moveAllowed {
             // 1.生成随机位置的coin
-            let coinNode = CoinSprite.sharedInstance()
+            let coinNode = WYCoinSprite.sharedInstance()
             let minY = groundNode.size.height  // 开始处
             let maxY = size.height
             let randomY = CGFloat.random(minY, max: maxY)
@@ -502,7 +496,7 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
         if playerNode.position.y <  (groundNode.size.height + playerNode.size.height / 2) {
             playerNode.position = CGPoint(x: playerNode.position.x, y: (groundNode.size.height + playerNode.size.height / 2))
             // 进入游戏结束state
-            stateMachine.enter(GameOverState.self)
+            stateMachine.enter(WYGameOverState.self)
         }
         
     }
@@ -547,7 +541,7 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
         
         /// 判断目前的GameScene场景舞台是哪个state
         switch stateMachine.currentState {
-        case is WaitingForTapState:
+        case is WYWaitingForTapState:
             ///  stateMachine获取点击位置=>State场景要通过physicsWorld.body进行获得点击点
             guard let body = physicsWorld.body(at: touchLocation) else {
                 return
@@ -558,14 +552,14 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
                 // Hide logo + PlayButton
                 playButton?.isHidden = true
                 startLogo?.isHidden = true
-                stateMachine.enter(PlayingState.self) /// 进入开始游戏;
+                stateMachine.enter(WYPlayingState.self) /// 进入开始游戏;
                 //开始计时器
 //                self.timer.fireDate = NSDate.distantPast
                 self.isEnd = false;
             }
-        case is PlayingState:
+        case is WYPlayingState:
             applyImpluse(lastUpdateTimeInterval)      /// 移动;
-        case is GameOverState:
+        case is WYGameOverState:
             /// 游戏结束的state
             /// stateMachine获取点击位置
             guard let body = physicsWorld.body(at: touchLocation) else {
@@ -601,7 +595,7 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
             bodyB = contact.bodyA
         }
         // 收集硬币
-        if bodyA.categoryBitMask == PhysicsFlyCategory.Player && bodyB.categoryBitMask == PhysicsFlyCategory.Coin {
+        if bodyA.categoryBitMask == WyPhysicsFlyCategory.Player && bodyB.categoryBitMask == WyPhysicsFlyCategory.Coin {
             collectionCoins(nodeA: bodyA.node as! SKSpriteNode, nodeB: bodyB.node as! SKSpriteNode)
         }else{//游戏结束
             print("游戏结束")
@@ -616,17 +610,17 @@ class GameFlyScene: SKScene,SKPhysicsContactDelegate {
         }
         
         // 撞到obscatle
-        if bodyA.categoryBitMask == PhysicsFlyCategory.Player && bodyB.categoryBitMask == PhysicsFlyCategory.Obstacle {
+        if bodyA.categoryBitMask == WyPhysicsFlyCategory.Player && bodyB.categoryBitMask == WyPhysicsFlyCategory.Obstacle {
             print("scene:player hit the obstacles")
-            stateMachine.enter(FallingState.self)
+            stateMachine.enter(WYFallingState.self)
         }
         // 撞到地面
-        if bodyA.categoryBitMask == PhysicsFlyCategory.Player && bodyB.categoryBitMask == PhysicsFlyCategory.Ground {
+        if bodyA.categoryBitMask == WyPhysicsFlyCategory.Player && bodyB.categoryBitMask == WyPhysicsFlyCategory.Ground {
             print("scene:player dropped down to the ground")
-            stateMachine.enter(GameOverState.self)
+            stateMachine.enter(WYGameOverState.self)
         }
         
-        if bodyA.categoryBitMask == PhysicsFlyCategory.Ground && bodyB.categoryBitMask == PhysicsFlyCategory.Crown {
+        if bodyA.categoryBitMask == WyPhysicsFlyCategory.Ground && bodyB.categoryBitMask == WyPhysicsFlyCategory.Crown {
             print("scene:crown dropped down to the ground")
 //            self.timer.fireDate = NSDate.distantFuture
         }

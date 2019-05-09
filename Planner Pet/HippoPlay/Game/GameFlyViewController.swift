@@ -1,9 +1,9 @@
 //
-//  GameFlyViewController.swift
+//  GameFlyViewController.swif
 //  Planner Pet
 //
-//  Created by lishimin on 2019/5/5.
-//  Copyright © 2019 Wenyin Zheng, Will Powers. All rights reserved.
+//  Created by Wenyin Zheng on 2019/4/12.
+//  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import UIKit

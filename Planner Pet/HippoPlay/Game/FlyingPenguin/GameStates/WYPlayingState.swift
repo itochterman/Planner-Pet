@@ -1,15 +1,15 @@
 //
-//  Playing.swift
-//  FlyingPenguin
-
-//  Copyright © 2018 iFiero. All rights reserved.
+//  WYPlayingState.swif
+//  Planner Pet
+//
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class PlayingState :GKState {
+class WYPlayingState :GKState {
     unowned let scene:GameFlyScene
     
     init(scene:SKScene){
@@ -31,7 +31,7 @@ class PlayingState :GKState {
         
     }
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return (stateClass == FallingState.self) || (stateClass == GameOverState.self)
+        return (stateClass == WYFallingState.self) || (stateClass == WYGameOverState.self)
     }
     // 每FRAME需要调用
     override func update(deltaTime seconds: TimeInterval) {

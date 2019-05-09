@@ -1,8 +1,8 @@
 //
-//  GameViewController.swift
-//  HippoPlay
+//  GameViewController.swif
+//  Planner Pet
 //
-//  Created by Wenyin Zheng on 2019/4/23.
+//  Created by Wenyin Zheng on 2019/4/12.
 //  Copyright © 2019 Wenyin Zheng. All rights reserved.
 //
 
@@ -26,10 +26,6 @@ class GameViewController: UIViewController {
 
         let sceneStart = SKScene(fileNamed: "GameStart")
         sceneStart?.size = CGSize(width: 2048, height: 1536)
-        // let scene = GameScene(size:CGSize(width: 2048, height: 1536))
-        // let scene = GameScene(size:self.view.bounds.size) // view指手机屏幕的尺寸;
-        // iPhone 5=>320 | iPhone/6/7/8=>375
-        // print(scene.size)
         let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
@@ -47,15 +43,6 @@ class GameViewController: UIViewController {
                                                name: notificationNormalName, object: nil)
         
     }
-    
-//    init(successPlayBlock: @escaping () -> Void) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.successPlayBlock = successPlayBlock
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     
     @objc func backNormal(notification: Notification) {
