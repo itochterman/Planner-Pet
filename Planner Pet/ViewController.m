@@ -244,9 +244,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSManagedObject * obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [self performSegueWithIdentifier:@"taskView" sender:task];
+    [self performSegueWithIdentifier:@"taskView" sender:obj];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -275,9 +275,7 @@
         [moc deleteObject:task];
         [weakSelf.appDelegate saveContext];
     }];
-    
-    //delete.backgroundColor = UIColor.redColor;
-    
+        
     return @[delete];
 }
 
@@ -316,42 +314,35 @@
 {
     [[self tableView] beginUpdates];
 }
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>) section atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)changeType
 {
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [[self tableView] insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [[self tableView] deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeMove:
-        case NSFetchedResultsChangeUpdate:
-            break;
+    //if a new task is added....
+    if(changeType == NSFetchedResultsChangeInsert){
+        [[self tableView] insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
     }
+    //if a task is deleted...
+    else if(changeType == NSFetchedResultsChangeDelete){
+        [[self tableView] deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+    }
+
 }
+
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [[self tableView] endUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
+- (void)controller:(NSFetchedResultsController *)resController didChangeObject:(id)task atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType) changeType newIndexPath:(NSIndexPath *)newIndexPath
 {
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [[self tableView] insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeDelete:
+    if (changeType==NSFetchedResultsChangeInsert){
+        [[self tableView] insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if(changeType == NSFetchedResultsChangeDelete){
             [[self tableView] deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeUpdate:
+    }
+    else if(changeType ==NSFetchedResultsChangeUpdate){
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeMove:
-            [[self tableView] deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [[self tableView] insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
     }
 }
 
