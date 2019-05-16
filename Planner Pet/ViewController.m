@@ -8,10 +8,14 @@
 
 #import "ViewController.h"
 #import "HippoManager.h"
+#import "HippoMainView.h"
 
 @interface ViewController ()
 
+@property(nonatomic,strong)UIImageView *hippoBackImageView;
+@property (nonatomic,strong)HippoMainView *hippoMainView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (nonatomic, strong) NSMutableArray * relaxImageAry;
 @property (weak, nonatomic) IBOutlet UIButton *taskViewB;
 @property (weak, nonatomic) IBOutlet UILabel *currentDT;
 @property (weak, nonatomic) IBOutlet UIButton *createTask;
@@ -65,6 +69,7 @@
     _currentDT.text = daDate;
     
     _appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startPalyGameNot) name:@"begainPlayGame" object:nil];
     
@@ -82,6 +87,7 @@
      });
      });
      */
+    
 }
 
 //收到开始游戏的通知
@@ -120,6 +126,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -244,14 +251,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject * obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSManagedObject * task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [self performSegueWithIdentifier:@"taskView" sender:obj];
+    [self performSegueWithIdentifier:@"taskView" sender:task];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 45;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -352,10 +359,6 @@
     [self performSegueWithIdentifier: @"createNewTask" sender:self];
 }
 
-- (IBAction)viewTaskBP:(id)sender {
-    
-    //    [self performSegueWithIdentifier:@"taskView" sender:self];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -18,8 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="29175.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HrL-dC-K46">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="walk0010" translatesAutoresizingMaskIntoConstraints="NO" id="HrL-dC-K46">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Screen Shot 2019-05-16 at 2.18.06 PM.png" translatesAutoresizingMaskIntoConstraints="NO" id="eIM-7S-Lt3">
+                                <rect key="frame" x="57" y="96" width="261" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shit.png" translatesAutoresizingMaskIntoConstraints="NO" id="d18-8b-lU7">
+                                <rect key="frame" x="283" y="352" width="35" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -33,6 +42,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="29175.jpg" width="375" height="667"/>
+        <image name="Screen Shot 2019-05-16 at 2.18.06 PM.png" width="165" height="34"/>
+        <image name="shit.png" width="120" height="120"/>
+        <image name="walk0010" width="200" height="200"/>
     </resources>
 </document>

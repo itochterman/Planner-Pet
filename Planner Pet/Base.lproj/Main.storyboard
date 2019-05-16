@@ -74,7 +74,6 @@
                                     <color key="titleColor" red="0.0" green="0.80784313725490198" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="viewTaskBP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vDQ-Bm-YHa"/>
                                     <segue destination="by4-Hb-Zd5" kind="presentation" id="IfF-SQ-BPX"/>
                                 </connections>
                             </button>
@@ -510,9 +509,6 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="touchDate:" destination="zAo-ZO-M5i" eventType="touchDown" id="Rcd-GM-H0u"/>
-                                                </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="VNs-pS-egD">
                                                 <rect key="frame" x="54.5" y="438" width="146" height="30"/>

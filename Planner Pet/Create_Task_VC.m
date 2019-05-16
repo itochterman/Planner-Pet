@@ -83,22 +83,27 @@
 
 }
 
-- (void)keyboardWasShown:(NSNotification*)aNotification
+- (void)keyboardWasShown:(NSNotification*)notif
 {
-    self.scrollView.scrollEnabled = YES;
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    NSDictionary* notifInfo = [notif userInfo];
 
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= kbSize.height;
-    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+    self.scrollView.scrollEnabled = YES;
+    CGSize keyboardSize = [[notifInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets insets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    self.scrollView.contentInset = insets;
+    self.scrollView.scrollIndicatorInsets = insets;
+    
+    CGRect viewRect = self.view.frame;
+    viewRect.size.height -=keyboardSize.height;
+    
+    
+    
+    if (!CGRectContainsPoint(viewRect, self.activeField.frame.origin) ) {
         [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
     }
 }
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+- (void)keyboardWillBeHidden:(NSNotification*)notif
 {
 
     [self.scrollView setContentOffset:CGPointZero animated:YES];
@@ -132,17 +137,6 @@
         return YES;
     }
 }
-
-- (IBAction)touchDate:(id)sender {
-//    _dateLabel.text = @"Date: ";
-    
-//    [datePicker addTarget:self action:@selector(saveDate:)
-//         forControlEvents:UIControlEventValueChanged];
-    
-    //    NSLog(@"The date is: %@", self.addDate.text);
-    
-}
-
 -(void)datePickerChange:(id)sender{
     UIDatePicker * picker = (UIDatePicker*) sender;
     
